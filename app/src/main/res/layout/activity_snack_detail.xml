@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/krem"
+    tools:context=".SnackDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp">
+
+        <!-- ===== Tombol kembali di atas (tanpa file drawable tambahan) ===== -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnBack"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_gravity="start"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/btn_kembali"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="0dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="?attr/homeAsUpIndicator"
+                android:importantForAccessibility="no" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Gambar, nama, dan deskripsi diisi dari data Intent -->
+        <ImageView
+            android:id="@+id/imgSnack"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/judul_gizi"
+            tools:src="@drawable/nabati_richeese" />
+
+        <TextView
+            android:id="@+id/textNamaSnack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/merah_nabati"
+            android:fontFamily="@font/montserrat_black"
+            tools:text="Richeese Wafer Keju" />
+
+        <TextView
+            android:id="@+id/textProdusen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/snack_produsen"
+            android:textSize="14sp"
+            android:textColor="@color/abu_gelap" />
+
+        <TextView
+            android:id="@+id/textDeskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="15sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/black"
+            tools:text="Deskripsi produk" />
+
+        <!-- ===== MaterialCardView untuk tabel gizi ===== -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardGizi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textJudulGizi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@color/kuning_nabati"
+                    android:text="@string/judul_gizi"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TableLayout
+                    android:id="@+id/tabelGizi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp">
+
+                    <TableRow android:paddingVertical="6dp">
+                        <TextView android:layout_width="0dp" android:layout_weight="1"
+                            android:layout_height="wrap_content" android:text="@string/label_takaran"
+                            android:textColor="@color/abu_gelap" android:textSize="15sp" />
+                        <TextView android:id="@+id/valTakaran" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="-"
+                            android:textColor="@color/black" android:textSize="15sp"
+                            android:textStyle="bold" android:gravity="end" />
+                    </TableRow>
+                    <TableRow android:paddingVertical="6dp">
+                        <TextView android:layout_width="0dp" android:layout_weight="1"
+                            android:layout_height="wrap_content" android:text="@string/label_energi"
+                            android:textColor="@color/abu_gelap" android:textSize="15sp" />
+                        <TextView android:id="@+id/valEnergi" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="-"
+                            android:textColor="@color/black" android:textSize="15sp"
+                            android:textStyle="bold" android:gravity="end" />
+                    </TableRow>
+                    <TableRow android:paddingVertical="6dp">
+                        <TextView android:layout_width="0dp" android:layout_weight="1"
+                            android:layout_height="wrap_content" android:text="@string/label_lemak"
+                            android:textColor="@color/abu_gelap" android:textSize="15sp" />
+                        <TextView android:id="@+id/valLemak" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="-"
+                            android:textColor="@color/black" android:textSize="15sp"
+                            android:textStyle="bold" android:gravity="end" />
+                    </TableRow>
+                    <TableRow android:paddingVertical="6dp">
+                        <TextView android:layout_width="0dp" android:layout_weight="1"
+                            android:layout_height="wrap_content" android:text="@string/label_protein"
+                            android:textColor="@color/abu_gelap" android:textSize="15sp" />
+                        <TextView android:id="@+id/valProtein" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="-"
+                            android:textColor="@color/black" android:textSize="15sp"
+                            android:textStyle="bold" android:gravity="end" />
+                    </TableRow>
+                    <TableRow android:paddingVertical="6dp">
+                        <TextView android:layout_width="0dp" android:layout_weight="1"
+                            android:layout_height="wrap_content" android:text="@string/label_karbo"
+                            android:textColor="@color/abu_gelap" android:textSize="15sp" />
+                        <TextView android:id="@+id/valKarbo" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="-"
+                            android:textColor="@color/black" android:textSize="15sp"
+                            android:textStyle="bold" android:gravity="end" />
+                    </TableRow>
+                    <TableRow android:paddingVertical="6dp">
+                        <TextView android:layout_width="0dp" android:layout_weight="1"
+                            android:layout_height="wrap_content" android:text="@string/label_gula"
+                            android:textColor="@color/abu_gelap" android:textSize="15sp" />
+                        <TextView android:id="@+id/valGula" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="-"
+                            android:textColor="@color/black" android:textSize="15sp"
+                            android:textStyle="bold" android:gravity="end" />
+                    </TableRow>
+                    <TableRow android:paddingVertical="6dp">
+                        <TextView android:layout_width="0dp" android:layout_weight="1"
+                            android:layout_height="wrap_content" android:text="@string/label_natrium"
+                            android:textColor="@color/abu_gelap" android:textSize="15sp" />
+                        <TextView android:id="@+id/valNatrium" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="-"
+                            android:textColor="@color/black" android:textSize="15sp"
+                            android:textStyle="bold" android:gravity="end" />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textCatatan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/catatan_gizi"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:textColor="@color/abu_gelap" />
+
+        <!-- Memicu AlertDialog -> Snackbar -->
+        <Button
+            android:id="@+id/btnCatat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:paddingVertical="12dp"
+            android:text="@string/btn_catat"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/merah_nabati" />
+
+        <Button
+            android:id="@+id/btnKembali"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/btn_kembali"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/abu_gelap" />
+
+    </LinearLayout>
+</ScrollView>

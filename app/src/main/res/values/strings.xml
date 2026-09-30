@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">ADT-Nabati</string>
+
+    <!-- ===== MainActivity ===== -->
+    <string name="app_title">ADT-Nabati</string>
+    <string name="app_subtitle">Info Snack &amp; Kandungan Gizi</string>
+    <string name="label_pilih_produk">Pilih Varian Produk</string>
+
+    <!-- ===== Data produk (GANTI angka gizi sesuai label kemasan asli) ===== -->
+    <string name="nama_richeese">Richeese Wafer Keju</string>
+    <string name="desc_richeese">Wafer renyah berlapis krim keju gurih-manis. Snack favorit anak-anak hingga dewasa karena rasa kejunya yang khas dan teksturnya yang crispy.</string>
+    <string name="info_richeese">37 g · 190 kkal · Gula 11 g</string>
+
+    <string name="nama_richoco">Richoco Wafer Cokelat</string>
+    <string name="desc_richoco">Wafer renyah dengan lapisan krim cokelat yang manis. Cocok untuk teman santai atau camilan di sela aktivitas.</string>
+    <string name="info_richoco">37 g · 185 kkal · Gula 12 g</string>
+
+    <string name="nama_rolls">Nabati Rolls Richeese</string>
+    <string name="desc_rolls">Wafer gulung berisi krim keju. Bentuknya praktis dan mudah dibawa ke mana saja.</string>
+    <string name="info_rolls">33 g · 170 kkal · Gula 10 g</string>
+
+    <!-- ===== SnackDetailActivity ===== -->
+    <string name="snack_produsen">PT Kaldu Sari Nabati Indonesia · Bandung</string>
+    <string name="judul_gizi">Informasi Nilai Gizi</string>
+    <string name="label_takaran">Takaran saji</string>
+    <string name="label_energi">Energi total</string>
+    <string name="label_lemak">Lemak total</string>
+    <string name="label_protein">Protein</string>
+    <string name="label_karbo">Karbohidrat total</string>
+    <string name="label_gula">Gula</string>
+    <string name="label_natrium">Natrium</string>
+    <string name="catatan_gizi">*Nilai gizi mengacu pada label kemasan, dapat berbeda tiap ukuran/varian.</string>
+
+    <string name="fmt_gram">%1$d g</string>
+    <string name="fmt_kkal">%1$d kkal</string>
+    <string name="fmt_mg">%1$d mg</string>
+
+    <string name="btn_catat">Catat Konsumsi</string>
+    <string name="btn_kembali">Kembali</string>
+
+    <!-- AlertDialog & Snackbar -->
+    <string name="dialog_title">Catat Konsumsi?</string>
+    <string name="dialog_message">Kamu akan mencatat 1 bungkus %1$s.\nKandungan gula: %2$d g (batas harian 50 g).</string>
+    <string name="dialog_ya">Ya, Catat</string>
+    <string name="dialog_batal">Batal</string>
+    <string name="snackbar_tercatat">%1$s berhasil dicatat</string>
+    <string name="snackbar_undo">Batalkan</string>
+    <string name="snackbar_dibatalkan">Pencatatan dibatalkan</string>
+</resources>
