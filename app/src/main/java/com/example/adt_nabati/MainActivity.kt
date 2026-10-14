@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.adt_nabati.databinding.ActivityMainBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlin.jvm.java
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +29,14 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        // Kode ini harus selalu dipanggil saat butuh akses "user_pref"
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+
+        // Tampilkan username yang disimpan saat login
+        val username = sharedPref.getString("username", "")
+        binding.textSapaan.text = getString(R.string.label_sapaan_user, username)
+        binding.textAkunDesc.text = getString(R.string.akun_desc, username)
+
         // Card produk -> kirim data ke SnackDetailActivity
         binding.cardRicheese.setOnClickListener {
             bukaDetail(getString(R.string.nama_richeese), getString(R.string.desc_richeese),
@@ -47,6 +56,34 @@ class MainActivity : AppCompatActivity() {
         binding.btnWebView.setOnClickListener {
             val intent = Intent(this, WebViewActivity::class.java)
             startActivity(intent)
+        }
+
+        // Ke halaman Profil Developer
+        binding.btnProfil.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Logout: konfirmasi AlertDialog -> hapus sharedPreferences -> ke AuthActivity
+        binding.btnLogout.setOnClickListener {
+            MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.logout_title)
+                .setMessage(R.string.logout_message)
+                .setPositiveButton(R.string.logout_ya) { dialog, _ ->
+                    val editor = sharedPref.edit()
+                    editor.clear()
+                    editor.apply()
+                    Log.e("Info Logout", "sharedPreferences dihapus, isLogin kembali false")
+
+                    dialog.dismiss()
+                    val intent = Intent(this, AuthActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                .setNegativeButton(R.string.dialog_batal) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
         }
     }
 

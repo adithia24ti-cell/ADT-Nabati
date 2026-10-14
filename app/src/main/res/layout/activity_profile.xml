@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/krem"
+    tools:context=".ProfileActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:titleTextColor="@android:color/white"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+            app:layout_scrollFlags="scroll|enterAlways" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:padding="20dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Header: foto + identitas developer -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardIdentitas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/merah_nabati"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:padding="20dp">
+
+                    <!-- GANTI src dengan foto developer, contoh: @drawable/foto_developer -->
+                    <ImageView
+                        android:id="@+id/imgDeveloper"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:src="@drawable/logo_icon" />
+
+                    <TextView
+                        android:id="@+id/textNamaDev"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/dev_nama"
+                        android:textSize="26sp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/baloo2_extrabold" />
+
+                    <TextView
+                        android:id="@+id/textPeranDev"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dev_peran"
+                        android:textSize="14sp"
+                        android:textColor="@color/kuning_nabati"
+                        android:fontFamily="@font/jakarta_bold" />
+
+                    <TextView
+                        android:id="@+id/textKampusDev"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center"
+                        android:text="@string/dev_kampus"
+                        android:textSize="13sp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/jakarta_regular" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Tentang Saya -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardTentang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:backgroundTint="@color/white"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/labelTentang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_tentang"
+                        android:textSize="13sp"
+                        android:textColor="@color/merah_nabati"
+                        android:fontFamily="@font/jakarta_bold" />
+
+                    <TextView
+                        android:id="@+id/textTentang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="@string/dev_tentang"
+                        android:textSize="14sp"
+                        android:textColor="@color/tinta"
+                        android:fontFamily="@font/jakarta_regular" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Hobi -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardHobi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:backgroundTint="@color/white"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/labelHobi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_hobi"
+                        android:textSize="13sp"
+                        android:textColor="@color/merah_nabati"
+                        android:fontFamily="@font/jakarta_bold" />
+
+                    <TextView
+                        android:id="@+id/textHobi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="@string/dev_hobi"
+                        android:textSize="14sp"
+                        android:textColor="@color/tinta"
+                        android:fontFamily="@font/jakarta_regular"
+                        android:lineSpacingExtra="4dp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Kekuatan Terbesar (warna kuning sebagai sorotan) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardKekuatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:backgroundTint="@color/kuning_nabati"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/labelKekuatan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_kekuatan"
+                        android:textSize="13sp"
+                        android:textColor="@color/tinta"
+                        android:fontFamily="@font/jakarta_bold" />
+
+                    <TextView
+                        android:id="@+id/textKekuatanJudul"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/dev_kekuatan_judul"
+                        android:textSize="20sp"
+                        android:textColor="@color/merah_nabati"
+                        android:fontFamily="@font/baloo2_extrabold" />
+
+                    <TextView
+                        android:id="@+id/textKekuatanDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dev_kekuatan_desc"
+                        android:textSize="14sp"
+                        android:textColor="@color/tinta"
+                        android:fontFamily="@font/jakarta_regular" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Sosial Media -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSosmed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:backgroundTint="@color/white"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/labelSosmed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_sosmed"
+                        android:textSize="13sp"
+                        android:textColor="@color/merah_nabati"
+                        android:fontFamily="@font/jakarta_bold" />
+
+                    <!-- Instagram -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/label_instagram"
+                        android:textSize="12sp"
+                        android:textColor="@color/abu_gelap"
+                        android:fontFamily="@font/jakarta_regular" />
+
+                    <TextView
+                        android:id="@+id/valInstagram"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dev_instagram"
+                        android:textSize="15sp"
+                        android:textColor="@color/merah_nabati"
+                        android:fontFamily="@font/jakarta_bold" />
+
+                    <!-- GitHub -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/label_github"
+                        android:textSize="12sp"
+                        android:textColor="@color/abu_gelap"
+                        android:fontFamily="@font/jakarta_regular" />
+
+                    <TextView
+                        android:id="@+id/valGithub"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dev_github"
+                        android:textSize="15sp"
+                        android:textColor="@color/merah_nabati"
+                        android:fontFamily="@font/jakarta_bold" />
+
+                    <!-- LinkedIn -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/label_linkedin"
+                        android:textSize="12sp"
+                        android:textColor="@color/abu_gelap"
+                        android:fontFamily="@font/jakarta_regular" />
+
+                    <TextView
+                        android:id="@+id/valLinkedin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dev_linkedin"
+                        android:textSize="15sp"
+                        android:textColor="@color/merah_nabati"
+                        android:fontFamily="@font/jakarta_bold" />
+
+                    <!-- Email (teks saja) -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/label_email"
+                        android:textSize="12sp"
+                        android:textColor="@color/abu_gelap"
+                        android:fontFamily="@font/jakarta_regular" />
+
+                    <TextView
+                        android:id="@+id/valEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dev_email"
+                        android:textSize="15sp"
+                        android:textColor="@color/tinta"
+                        android:fontFamily="@font/jakarta_bold" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/textVersiProfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/splash_versi"
+                android:textSize="12sp"
+                android:textColor="@color/abu_gelap"
+                android:fontFamily="@font/jakarta_bold" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

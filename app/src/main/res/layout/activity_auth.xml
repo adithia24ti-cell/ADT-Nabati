@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/krem"
+    android:fillViewport="true"
+    tools:context=".AuthActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Latar merah bagian atas -->
+        <View
+            android:id="@+id/bgHeader"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:background="@color/merah_nabati"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- ImageView untuk Logo -->
+        <ImageView
+            android:id="@+id/imgLogoAuth"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/logo_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textNamaAuth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_title"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/baloo2_extrabold"
+            app:layout_constraintTop_toBottomOf="@id/imgLogoAuth"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textTaglineAuth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_tagline"
+            android:textSize="13sp"
+            android:textColor="@color/kuning_nabati"
+            android:fontFamily="@font/jakarta_bold"
+            app:layout_constraintTop_toBottomOf="@id/textNamaAuth"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Card form login -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/white"
+            app:cardElevation="6dp"
+            app:layout_constraintTop_toBottomOf="@id/textTaglineAuth"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/textJudulLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/auth_judul"
+                    android:textSize="22sp"
+                    android:textColor="@color/tinta"
+                    android:fontFamily="@font/baloo2_extrabold" />
+
+                <TextView
+                    android:id="@+id/textSubLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/auth_sub"
+                    android:textSize="13sp"
+                    android:textColor="@color/abu_gelap"
+                    android:fontFamily="@font/jakarta_regular" />
+
+                <!-- EditText Username -->
+                <EditText
+                    android:id="@+id/edtUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/hint_username"
+                    android:inputType="text"
+                    android:textSize="15sp"
+                    android:textColor="@color/tinta"
+                    android:fontFamily="@font/jakarta_regular"
+                    android:backgroundTint="@color/merah_nabati" />
+
+                <!-- EditText Password -->
+                <EditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/hint_password"
+                    android:inputType="textPassword"
+                    android:textSize="15sp"
+                    android:textColor="@color/tinta"
+                    android:fontFamily="@font/jakarta_regular"
+                    android:backgroundTint="@color/merah_nabati" />
+
+                <!-- Button Login -->
+                <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/btn_login"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/jakarta_bold"
+                    android:backgroundTint="@color/merah_nabati" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textVersiAuth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/splash_versi"
+            android:textSize="12sp"
+            android:textColor="@color/abu_gelap"
+            android:fontFamily="@font/jakarta_bold"
+            app:layout_constraintTop_toBottomOf="@id/cardLogin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

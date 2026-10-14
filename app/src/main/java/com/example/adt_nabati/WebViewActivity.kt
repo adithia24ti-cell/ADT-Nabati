@@ -28,10 +28,20 @@ class WebViewActivity : AppCompatActivity() {
             insets
         }
 
+        // Ambil data Intent (dari ProfileActivity). Jika kosong, pakai website Nabati
+        var url = intent.getStringExtra("url")
+        var judul = intent.getStringExtra("judul")
+        if (url == null) {
+            url = "https://www.nabatisnack.co.id/products.html"
+        }
+        if (judul == null) {
+            judul = getString(R.string.title_web)
+        }
+
         // Mengaktifkan toolbar
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
-            title = getString(R.string.title_web)
+            title = judul
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow_back)
@@ -39,7 +49,7 @@ class WebViewActivity : AppCompatActivity() {
 
         binding.webView.webViewClient = WebViewClient()
         binding.webView.settings.javaScriptEnabled = true
-        binding.webView.loadUrl("https://www.nabatisnack.co.id/products.html")
+        binding.webView.loadUrl(url)
 
         binding.webView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
             if (scrollY > oldScrollY) {

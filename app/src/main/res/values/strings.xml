@@ -58,4 +58,55 @@
     <string name="dialog_batal">Batal</string>
     <string name="snackbar_tercatat">%1$s berhasil dicatat</string>
     <string name="snackbar_undo">Batalkan</string>
+
+    <!-- Pertemuan 6: SplashScreen -->
+    <string name="splash_kampus">Teknik Informatika · Politeknik Caltex Riau</string>
+    <string name="splash_versi">VERSI 1.0</string>
+
+    <!-- Pertemuan 6: AuthActivity (Login) -->
+    <string name="auth_judul">Selamat Datang!</string>
+    <string name="auth_sub">Masuk dulu untuk mulai pantau camilanmu</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">Masuk</string>
+    <string name="dialog_login_title">Login Gagal</string>
+    <string name="dialog_login_message">Silahkan coba lagi</string>
+    <string name="dialog_ok">OK</string>
+
+    <!-- Pertemuan 6: MainActivity (Akun & Logout) -->
+    <string name="label_sapaan_user">Hai, %1$s! Mau ngemil apa hari ini?</string>
+    <string name="akun_title">Akun Kamu</string>
+    <string name="akun_desc">Masuk sebagai %1$s</string>
+    <string name="btn_profil">Profil</string>
+    <string name="btn_logout">Logout</string>
+    <string name="logout_title">Keluar dari Akun?</string>
+    <string name="logout_message">Kamu perlu login lagi untuk membuka ADT-Nabati.</string>
+    <string name="logout_ya">Ya</string>
+
+    <!-- Pertemuan 6: ProfileActivity (GANTI semua data dev_ sesuai data asli developer) -->
+    <string name="title_profil">Profil Developer</string>
+    <string name="label_tentang">TENTANG SAYA</string>
+    <string name="label_hobi">HOBI</string>
+    <string name="label_kekuatan">KEKUATAN TERBESAR</string>
+    <string name="label_sosmed">SOSIAL MEDIA</string>
+    <string name="label_instagram">Instagram</string>
+    <string name="label_github">GitHub</string>
+    <string name="label_linkedin">LinkedIn</string>
+    <string name="label_email">Email</string>
+
+    <string name="dev_nama">Adithia</string>
+    <string name="dev_peran">Android Developer · ADT-Nabati</string>
+    <string name="dev_kampus">NIM 2455301006 · Kelas 3 TI\nTeknik Informatika · Politeknik Caltex Riau</string>
+    <string name="dev_tentang">Mahasiswa Teknik Informatika PCR yang sedang belajar membangun aplikasi Android dengan Kotlin. ADT-Nabati dibuat agar ngemil tetap asyik tanpa lupa memperhatikan kandungan gizinya.</string>
+    <string name="dev_hobi">• Ngoding aplikasi Android\n• Desain tampilan aplikasi (UI)\n• Main game\n• Mencoba camilan baru</string>
+    <string name="dev_kekuatan_judul">Pantang Menyerah</string>
+    <string name="dev_kekuatan_desc">Kalau ketemu error, dicari solusinya sampai aplikasi bisa jalan, lalu dicatat supaya tidak terulang.</string>
+    <string name="dev_instagram">@adithiamustafa_025</string>
+    <string name="dev_github">github.com/adithia24ti-cell</string>
+    <string name="dev_linkedin">linkedin.com/in/adithia</string>
+    <string name="dev_email">adithia@mahasiswa.pcr.ac.id</string>
+
+    <string name="url_instagram">https://instagram.com/adithiamustofa_025?vrfl=MXd4a3phcnl3Zmxz</string>
+    <string name="url_github">https://github.com/adithia24ti-cell</string>
+    <string name="url_linkedin">https://www.linkedin.com/in/adithia</string>
 </resources>

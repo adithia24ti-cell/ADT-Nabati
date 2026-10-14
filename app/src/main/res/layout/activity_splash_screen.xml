@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/merah_nabati"
+    tools:context=".SplashScreenActivity">
+
+    <!-- Logo aplikasi di tengah layar -->
+    <ImageView
+        android:id="@+id/imgLogoSplash"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.42" />
+
+    <!-- Nama aplikasi -->
+    <TextView
+        android:id="@+id/textNamaSplash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/app_title"
+        android:textSize="38sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/baloo2_extrabold"
+        app:layout_constraintTop_toBottomOf="@id/imgLogoSplash"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Slogan -->
+    <TextView
+        android:id="@+id/textSloganSplash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_tagline"
+        android:textSize="14sp"
+        android:textColor="@color/kuning_nabati"
+        android:fontFamily="@font/jakarta_bold"
+        app:layout_constraintTop_toBottomOf="@id/textNamaSplash"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Identitas: kampus + versi -->
+    <TextView
+        android:id="@+id/textKampusSplash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="@string/splash_kampus"
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/jakarta_regular"
+        app:layout_constraintBottom_toTopOf="@id/textVersiSplash"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textVersiSplash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/splash_versi"
+        android:textSize="13sp"
+        android:textColor="@color/kuning_nabati"
+        android:fontFamily="@font/jakarta_bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
