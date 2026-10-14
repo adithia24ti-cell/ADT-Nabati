@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">ADT-Nabati</string>
 
-    <!-- ===== MainActivity ===== -->
+    <!-- MainActivity -->
     <string name="app_title">ADT-Nabati</string>
-    <string name="app_subtitle">Info Snack &amp; Kandungan Gizi</string>
+    <string name="app_tagline">Ngemil tetap asyik, gizi tetap terjaga</string>
+    <string name="label_sapaan">Mau ngemil apa hari ini?</string>
     <string name="label_pilih_produk">Pilih Varian Produk</string>
+    <string name="web_card_title">Kenal Lebih Dekat dengan Nabati</string>
+    <string name="web_card_desc">Lihat semua produk resmi di website Nabati.</string>
+    <string name="btn_web_view">Website Nabati</string>
 
-    <!-- ===== Data produk (GANTI angka gizi sesuai label kemasan asli) ===== -->
+    <!-- Data produk (GANTI angka gizi sesuai label kemasan asli) -->
     <string name="nama_richeese">Richeese Wafer Keju</string>
     <string name="desc_richeese">Wafer renyah berlapis krim keju gurih-manis. Snack favorit anak-anak hingga dewasa karena rasa kejunya yang khas dan teksturnya yang crispy.</string>
     <string name="info_richeese">37 g · 190 kkal · Gula 11 g</string>
@@ -19,7 +23,17 @@
     <string name="desc_rolls">Wafer gulung berisi krim keju. Bentuknya praktis dan mudah dibawa ke mana saja.</string>
     <string name="info_rolls">33 g · 170 kkal · Gula 10 g</string>
 
-    <!-- ===== SnackDetailActivity ===== -->
+    <!-- Judul Toolbar -->
+    <string name="title_detail">Detail Produk</string>
+    <string name="title_web">Website Nabati</string>
+
+    <!-- Option Menu -->
+    <string name="menu_favorit">Favorit</string>
+    <string name="menu_info">Info Batas Gula</string>
+    <string name="toast_favorit">Ditambahkan ke favorit</string>
+    <string name="toast_info">Batas gula harian anjuran Kemenkes: 50 g</string>
+
+    <!-- SnackDetailActivity -->
     <string name="snack_produsen">PT Kaldu Sari Nabati Indonesia · Bandung</string>
     <string name="judul_gizi">Informasi Nilai Gizi</string>
     <string name="label_takaran">Takaran saji</string>
@@ -36,7 +50,6 @@
     <string name="fmt_mg">%1$d mg</string>
 
     <string name="btn_catat">Catat Konsumsi</string>
-    <string name="btn_kembali">Kembali</string>
 
     <!-- AlertDialog & Snackbar -->
     <string name="dialog_title">Catat Konsumsi?</string>
@@ -45,5 +58,4 @@
     <string name="dialog_batal">Batal</string>
     <string name="snackbar_tercatat">%1$s berhasil dicatat</string>
     <string name="snackbar_undo">Batalkan</string>
-    <string name="snackbar_dibatalkan">Pencatatan dibatalkan</string>
 </resources>

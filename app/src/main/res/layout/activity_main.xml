@@ -12,40 +12,78 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
-        <TextView
-            android:id="@+id/textJudulApp"
-            android:layout_width="wrap_content"
+        <!-- Header: Logo + Judul Aplikasi -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardHeader"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
-            android:text="@string/app_title"
-            android:textStyle="bold"
-            android:textSize="28sp"
-            android:textColor="@color/merah_nabati"
-            android:fontFamily="@font/montserrat_black" />
-
-        <TextView
-            android:id="@+id/textSubjudul"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
-            android:text="@string/app_subtitle"
-            android:textSize="16sp"
-            android:textColor="@color/abu_gelap" />
+            android:backgroundTint="@color/merah_nabati"
+            app:cardElevation="4dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp">
+
+                <ImageView
+                    android:id="@+id/imgLogo"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/logo_icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textJudulApp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/app_title"
+                    android:textSize="30sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/baloo2_extrabold"
+                    app:layout_constraintTop_toTopOf="@id/imgLogo"
+                    app:layout_constraintStart_toEndOf="@id/imgLogo"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/textTagline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_tagline"
+                    android:textSize="13sp"
+                    android:textColor="@color/kuning_nabati"
+                    android:fontFamily="@font/jakarta_bold"
+                    app:layout_constraintTop_toBottomOf="@id/textJudulApp"
+                    app:layout_constraintStart_toStartOf="@id/textJudulApp"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textSapaan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/label_sapaan"
+            android:textSize="22sp"
+            android:textColor="@color/tinta"
+            android:fontFamily="@font/baloo2_extrabold" />
 
         <TextView
             android:id="@+id/textPilihProduk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:text="@string/label_pilih_produk"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/montserrat_black" />
+            android:textSize="14sp"
+            android:textColor="@color/abu_gelap"
+            android:fontFamily="@font/jakarta_regular" />
 
         <!-- Card: nama_richeese -->
         <com.google.android.material.card.MaterialCardView
@@ -53,10 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:clickable="true"
-            android:focusable="true"
             android:backgroundTint="@color/white"
-            app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,8 +103,6 @@
                     android:id="@+id/img_cardRicheese"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/nama_richeese"
                     android:src="@drawable/nabati_richeese"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -82,8 +115,8 @@
                     android:layout_marginStart="14dp"
                     android:text="@string/nama_richeese"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="@color/tinta"
+                    android:fontFamily="@font/jakarta_bold"
                     app:layout_constraintTop_toTopOf="@id/img_cardRicheese"
                     app:layout_constraintStart_toEndOf="@id/img_cardRicheese"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -96,6 +129,7 @@
                     android:text="@string/info_richeese"
                     android:textSize="13sp"
                     android:textColor="@color/abu_gelap"
+                    android:fontFamily="@font/jakarta_regular"
                     app:layout_constraintTop_toBottomOf="@id/nama_cardRicheese"
                     app:layout_constraintStart_toStartOf="@id/nama_cardRicheese"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -110,10 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:clickable="true"
-            android:focusable="true"
             android:backgroundTint="@color/white"
-            app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -125,8 +156,6 @@
                     android:id="@+id/img_cardRichoco"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/nama_richoco"
                     android:src="@drawable/nabati_richoco"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -139,8 +168,8 @@
                     android:layout_marginStart="14dp"
                     android:text="@string/nama_richoco"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="@color/tinta"
+                    android:fontFamily="@font/jakarta_bold"
                     app:layout_constraintTop_toTopOf="@id/img_cardRichoco"
                     app:layout_constraintStart_toEndOf="@id/img_cardRichoco"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -153,6 +182,7 @@
                     android:text="@string/info_richoco"
                     android:textSize="13sp"
                     android:textColor="@color/abu_gelap"
+                    android:fontFamily="@font/jakarta_regular"
                     app:layout_constraintTop_toBottomOf="@id/nama_cardRichoco"
                     app:layout_constraintStart_toStartOf="@id/nama_cardRichoco"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -167,10 +197,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:clickable="true"
-            android:focusable="true"
             android:backgroundTint="@color/white"
-            app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -182,8 +209,6 @@
                     android:id="@+id/img_cardRolls"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/nama_rolls"
                     android:src="@drawable/nabati_rolls"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -196,8 +221,8 @@
                     android:layout_marginStart="14dp"
                     android:text="@string/nama_rolls"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="@color/tinta"
+                    android:fontFamily="@font/jakarta_bold"
                     app:layout_constraintTop_toTopOf="@id/img_cardRolls"
                     app:layout_constraintStart_toEndOf="@id/img_cardRolls"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -210,8 +235,67 @@
                     android:text="@string/info_rolls"
                     android:textSize="13sp"
                     android:textColor="@color/abu_gelap"
+                    android:fontFamily="@font/jakarta_regular"
                     app:layout_constraintTop_toBottomOf="@id/nama_cardRolls"
                     app:layout_constraintStart_toStartOf="@id/nama_cardRolls"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Card + Tombol ke halaman WebView -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardWeb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/kuning_nabati"
+            app:cardElevation="4dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp">
+
+                <TextView
+                    android:id="@+id/textWebTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/web_card_title"
+                    android:textSize="18sp"
+                    android:textColor="@color/tinta"
+                    android:fontFamily="@font/baloo2_extrabold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/textWebDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/web_card_desc"
+                    android:textSize="13sp"
+                    android:textColor="@color/tinta"
+                    android:fontFamily="@font/jakarta_regular"
+                    app:layout_constraintTop_toBottomOf="@id/textWebTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <Button
+                    android:id="@+id/btnWebView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/btn_web_view"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/jakarta_bold"
+                    android:backgroundTint="@color/merah_nabati"
+                    app:icon="@drawable/ic_web"
+                    app:iconGravity="textStart"
+                    app:layout_constraintTop_toBottomOf="@id/textWebDesc"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

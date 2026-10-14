@@ -2,6 +2,9 @@ package com.example.adt_nabati
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -28,6 +31,7 @@ class SnackDetailActivity : AppCompatActivity() {
             insets
         }
 
+        // Ambil data Intent
         val nama = intent.getStringExtra("nama")
         val deskripsi = intent.getStringExtra("deskripsi")
         val gambar = intent.getIntExtra("gambar", R.drawable.nabati_richeese)
@@ -40,6 +44,17 @@ class SnackDetailActivity : AppCompatActivity() {
         val natrium = intent.getIntExtra("natrium", 0)
 
         Log.e("Data Intent", "Produk: $nama, Energi: $energi kkal, Gula: $gula g")
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.apply {
+            title = getString(R.string.title_detail)
+            subtitle = nama
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        }
+
+        // Tampilkan data ke layout
         binding.imgSnack.setImageResource(gambar)
         binding.textNamaSnack.text = nama
         binding.textDeskripsi.text = deskripsi
@@ -51,6 +66,7 @@ class SnackDetailActivity : AppCompatActivity() {
         binding.valGula.text = getString(R.string.fmt_gram, gula)
         binding.valNatrium.text = getString(R.string.fmt_mg, natrium)
 
+        // AlertDialog: konfirmasi sebelum mencatat
         binding.btnCatat.setOnClickListener {
             MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.dialog_title)
@@ -58,7 +74,11 @@ class SnackDetailActivity : AppCompatActivity() {
                 .setPositiveButton(R.string.dialog_ya) { dialog, _ ->
                     dialog.dismiss()
                     Log.e("Info Dialog", "Pengguna memilih Ya, $nama dicatat")
-                    tampilkanSnackbarTercatat(nama)
+                    Snackbar.make(binding.root, getString(R.string.snackbar_tercatat, nama), Snackbar.LENGTH_LONG)
+                        .setAction(R.string.snackbar_undo) {
+                            Log.e("Info Snackbar", "Pencatatan $nama dibatalkan")
+                        }
+                        .show()
                 }
                 .setNegativeButton(R.string.dialog_batal) { dialog, _ ->
                     dialog.dismiss()
@@ -66,23 +86,29 @@ class SnackDetailActivity : AppCompatActivity() {
                 }
                 .show()
         }
-
-        binding.btnBack.setOnClickListener { kembali() }
-        binding.btnKembali.setOnClickListener { kembali() }
     }
 
-    private fun kembali() {
-        Log.e("Navigasi", "Kembali dari SnackDetailActivity ke MainActivity")
-        finish()
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
     }
 
-    private fun tampilkanSnackbarTercatat(nama: String?) {
-        Snackbar.make(binding.root, getString(R.string.snackbar_tercatat, nama), Snackbar.LENGTH_LONG)
-            .setAction(R.string.snackbar_undo) {
-                Log.e("Info Snackbar", "Pencatatan $nama dibatalkan")
-                Snackbar.make(binding.root, R.string.snackbar_dibatalkan, Snackbar.LENGTH_SHORT).show()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
+                true
             }
-            .show()
+            R.id.action_favorit -> {
+                Toast.makeText(this, R.string.toast_favorit, Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_info -> {
+                Toast.makeText(this, R.string.toast_info, Toast.LENGTH_SHORT).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onStart() {

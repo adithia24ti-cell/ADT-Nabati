@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.adt_nabati.databinding.ActivityMainBinding
+import kotlin.jvm.java
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,39 +28,29 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.cardRicheese.setOnClickListener { bukaRicheese() }
+        // Card produk -> kirim data ke SnackDetailActivity
+        binding.cardRicheese.setOnClickListener {
+            bukaDetail(getString(R.string.nama_richeese), getString(R.string.desc_richeese),
+                R.drawable.nabati_richeese, 37, 190, 10, 2, 24, 11, 70)
+        }
 
         binding.cardRichoco.setOnClickListener {
-            bukaDetail(
-                nama = getString(R.string.nama_richoco),
-                deskripsi = getString(R.string.desc_richoco),
-                gambar = R.drawable.nabati_richoco,
-                takaran = 37, energi = 185, lemak = 10, protein = 2,
-                karbo = 23, gula = 12, natrium = 55
-            )
+            bukaDetail(getString(R.string.nama_richoco), getString(R.string.desc_richoco),
+                R.drawable.nabati_richoco, 37, 185, 10, 2, 23, 12, 55)
         }
 
         binding.cardRolls.setOnClickListener {
-            bukaDetail(
-                nama = getString(R.string.nama_rolls),
-                deskripsi = getString(R.string.desc_rolls),
-                gambar = R.drawable.nabati_rolls,
-                takaran = 33, energi = 170, lemak = 9, protein = 2,
-                karbo = 21, gula = 10, natrium = 65
-            )
+            bukaDetail(getString(R.string.nama_rolls), getString(R.string.desc_rolls),
+                R.drawable.nabati_rolls, 33, 170, 9, 2, 21, 10, 65)
+        }
+
+        binding.btnWebView.setOnClickListener {
+            val intent = Intent(this, WebViewActivity::class.java)
+            startActivity(intent)
         }
     }
 
-    private fun bukaRicheese() {
-        bukaDetail(
-            nama = getString(R.string.nama_richeese),
-            deskripsi = getString(R.string.desc_richeese),
-            gambar = R.drawable.nabati_richeese,
-            takaran = 37, energi = 190, lemak = 10, protein = 2,
-            karbo = 24, gula = 11, natrium = 70
-        )
-    }
-
+    // Intent + putExtra: kirim data produk ke SnackDetailActivity
     private fun bukaDetail(
         nama: String, deskripsi: String, gambar: Int,
         takaran: Int, energi: Int, lemak: Int, protein: Int,
