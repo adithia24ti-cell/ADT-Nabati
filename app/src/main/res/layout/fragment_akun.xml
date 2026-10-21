@@ -7,6 +7,17 @@
     android:background="@color/krem"
     tools:context=".Akun.AkunFragment">
 
+    <!-- Toolbar Fragment (cukup ConstraintLayout, tanpa CoordinatorLayout) -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <!-- Card Akun: Profil Developer + Logout -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardAkun"
@@ -15,7 +26,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:backgroundTint="@color/white"

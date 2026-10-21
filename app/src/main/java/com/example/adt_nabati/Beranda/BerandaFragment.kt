@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.adt_nabati.R
 import com.example.adt_nabati.databinding.FragmentBerandaBinding
@@ -29,6 +30,12 @@ class BerandaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Toolbar: berbeda dengan Activity, Fragment harus menggunakan (requireActivity() as AppCompatActivity)
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
+        (requireActivity() as AppCompatActivity).supportActionBar?.apply {
+            title = getString(R.string.menu_beranda)
+        }
 
         // Di Fragment, getSharedPreferences dipanggil lewat requireContext()
         val sharedPref = requireContext().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
