@@ -2,11 +2,14 @@ package com.example.adt_nabati
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import com.example.adt_nabati.Akun.AkunFragment
+import com.example.adt_nabati.Beranda.BerandaFragment
+import com.example.adt_nabati.Jelajah.JelajahFragment
 import com.example.adt_nabati.databinding.ActivityBaseBinding
 
 class BaseActivity : AppCompatActivity() {
@@ -28,23 +31,36 @@ class BaseActivity : AppCompatActivity() {
             insets
         }
 
+        /** BerandaFragment sebagai fragment default */
+        replaceFragment(BerandaFragment())
+
         binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.beranda -> {
-                    Toast.makeText(this, "Beranda Clicked", Toast.LENGTH_SHORT).show()
+                    Log.e("Bottom Nav", "Menu Beranda dipilih")
+                    replaceFragment(BerandaFragment())
                     true
                 }
                 R.id.jelajah -> {
-                    Toast.makeText(this, "Jelajah Clicked", Toast.LENGTH_SHORT).show()
+                    Log.e("Bottom Nav", "Menu Jelajah dipilih")
+                    replaceFragment(JelajahFragment())
                     true
                 }
                 R.id.akun -> {
-                    Toast.makeText(this, "Akun Clicked", Toast.LENGTH_SHORT).show()
+                    Log.e("Bottom Nav", "Menu Akun dipilih")
+                    replaceFragment(AkunFragment())
                     true
                 }
                 else -> false // return false jika item tidak ada yang di klik
             }
         }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(binding.fragmentContainer.id, fragment)
+            //.addToBackStack(null) -> dinonaktifkan agar saat back langsung keluar aplikasi
+            .commit()
     }
 
     override fun onDestroy() {
