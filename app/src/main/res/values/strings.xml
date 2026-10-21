@@ -114,4 +114,6 @@
     <string name="menu_beranda">Beranda</string>
     <string name="menu_jelajah">Jelajah</string>
     <string name="menu_akun">Akun</string>
+    <string name="jelajah_judul">Jelajahi Nabati</string>
+    <string name="jelajah_sub">Cari tahu lebih banyak tentang produk dan info resmi Nabati.</string>
 </resources>
