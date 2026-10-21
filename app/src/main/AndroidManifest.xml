@@ -30,15 +30,15 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".Akun.ProfileActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".SnackDetailActivity"
+            android:name=".Beranda.SnackDetailActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".WebViewActivity"
+            android:name=".Jelajah.WebViewActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>

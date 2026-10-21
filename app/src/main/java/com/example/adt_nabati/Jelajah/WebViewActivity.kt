@@ -1,4 +1,4 @@
-package com.example.adt_nabati
+package com.example.adt_nabati.Jelajah
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.adt_nabati.R
 import com.example.adt_nabati.databinding.ActivityWebViewBinding
 
 class WebViewActivity : AppCompatActivity() {

@@ -7,6 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.adt_nabati.Akun.ProfileActivity
+import com.example.adt_nabati.Beranda.SnackDetailActivity
+import com.example.adt_nabati.Jelajah.WebViewActivity
 import com.example.adt_nabati.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlin.jvm.java

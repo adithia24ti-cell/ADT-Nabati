@@ -1,4 +1,4 @@
-package com.example.adt_nabati
+package com.example.adt_nabati.Akun
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.adt_nabati.Jelajah.WebViewActivity
+import com.example.adt_nabati.R
 import com.example.adt_nabati.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {
