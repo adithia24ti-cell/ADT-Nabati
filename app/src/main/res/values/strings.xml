@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ADT-Nabati</string>
 
-    <!-- MainActivity -->
+    <!-- BerandaFragment & JelajahFragment (sebelumnya MainActivity) -->
     <string name="app_title">ADT-Nabati</string>
     <string name="app_tagline">Ngemil tetap asyik, gizi tetap terjaga</string>
     <string name="label_sapaan">Mau ngemil apa hari ini?</string>
@@ -73,7 +73,7 @@
     <string name="dialog_login_message">Silahkan coba lagi</string>
     <string name="dialog_ok">OK</string>
 
-    <!-- Pertemuan 6: MainActivity (Akun & Logout) -->
+    <!-- Pertemuan 6: Akun & Logout (Pertemuan 7: dipindah ke AkunFragment) -->
     <string name="label_sapaan_user">Hai, %1$s! Mau ngemil apa hari ini?</string>
     <string name="akun_title">Akun Kamu</string>
     <string name="akun_desc">Masuk sebagai %1$s</string>
