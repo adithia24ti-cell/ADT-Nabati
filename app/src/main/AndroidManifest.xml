@@ -25,6 +25,11 @@
             android:name=".AuthActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <!-- Pertemuan 7: BaseActivity sebagai activity utama (Bottom Navigation) -->
+        <activity
+            android:name=".BaseActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MainActivity"
             android:exported="false"

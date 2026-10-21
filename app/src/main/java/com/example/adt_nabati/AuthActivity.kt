@@ -46,7 +46,8 @@ class AuthActivity : AppCompatActivity() {
                 editor.apply()
                 Log.e("Info Login", "Login berhasil, isLogin disimpan true")
 
-                val intent = Intent(this, MainActivity::class.java)
+                // Ke BaseActivity (halaman utama dengan Bottom Navigation)
+                val intent = Intent(this, BaseActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {

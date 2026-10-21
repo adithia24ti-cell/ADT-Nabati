@@ -41,8 +41,8 @@ class SplashScreenActivity : AppCompatActivity() {
             Log.e("Cek Login", "isLogin = $isLogin")
 
             if (isLogin) {
-                // Sudah login -> langsung ke MainActivity
-                val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
+                // Sudah login -> langsung ke BaseActivity (halaman utama dengan Bottom Navigation)
+                val intent = Intent(this@SplashScreenActivity, BaseActivity::class.java)
                 startActivity(intent)
             } else {
                 // Belum login -> ke halaman login (AuthActivity)
