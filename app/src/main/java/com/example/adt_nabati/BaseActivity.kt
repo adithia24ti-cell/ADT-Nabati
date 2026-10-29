@@ -14,24 +14,22 @@ import com.example.adt_nabati.databinding.ActivityBaseBinding
 
 class BaseActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityBaseBinding
+    private lateinit var binding: ActivityBaseBinding // 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.e("onCreate", "BaseActivity dibuat pertama kali")
-
         enableEdgeToEdge()
-        binding = ActivityBaseBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        // systemBars.bottom diganti 0 agar Bottom Navigation tidak berjarak di bagian bawah
+        binding = ActivityBaseBinding.inflate(layoutInflater) // 2
+        setContentView(binding.root)  // 3
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
 
-        /** BerandaFragment sebagai fragment default */
         replaceFragment(BerandaFragment())
 
         binding.bottomNavView.setOnItemSelectedListener {
