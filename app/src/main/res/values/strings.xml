@@ -63,6 +63,12 @@
     <string name="grafik_kosong">Data gizi belum tersedia</string>
     <string name="fmt_ringkasan_grafik">1 bungkus = %1$d%% batas gula, %2$d%% batas natrium, dan %3$d%% batas lemak harian.</string>
 
+    <!-- FITUR BARU 2: Dengarkan Info Gizi (Text-to-Speech) -->
+    <string name="btn_dengarkan">Dengarkan Info Gizi</string>
+    <string name="tts_info_gizi">%1$s. Satu bungkus %2$d gram mengandung energi %3$d kilokalori, gula %4$d gram, natrium %5$d miligram, dan lemak %6$d gram. Gula ini setara %7$d persen batas gula harian.</string>
+    <string name="toast_tts_berhenti">Suara dihentikan</string>
+    <string name="toast_tts_gagal">Suara Bahasa Indonesia belum tersedia di perangkat</string>
+
     <!-- AlertDialog & Snackbar -->
     <string name="dialog_title">Catat Konsumsi?</string>
     <string name="dialog_message">Kamu akan mencatat 1 bungkus %1$s.\nKandungan gula: %2$d g (batas harian 50 g).</string>

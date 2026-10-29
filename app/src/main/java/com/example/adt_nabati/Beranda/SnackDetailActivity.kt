@@ -1,6 +1,7 @@
 package com.example.adt_nabati.Beranda
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -23,10 +24,14 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import java.util.Locale
 
-class SnackDetailActivity : AppCompatActivity() {
+class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private lateinit var binding: ActivitySnackDetailBinding
+
+    // FITUR BARU 2: objek Text-to-Speech
+    private lateinit var tts: TextToSpeech
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,6 +86,26 @@ class SnackDetailActivity : AppCompatActivity() {
         tampilkanPieGizi(lemak, protein, karbo, energi)
         tampilkanBarBatas(gula, natrium, lemak)
 
+        // FITUR BARU 2: siapkan Text-to-Speech, hasilnya diterima di onInit()
+        tts = TextToSpeech(this, this)
+
+        // FITUR BARU 2: kalimat info gizi yang dibacakan (dari strings.xml)
+        val teksInfoGizi = getString(
+            R.string.tts_info_gizi, nama, takaran, energi, gula, natrium, lemak, gula * 100 / 50
+        )
+
+        // FITUR BARU 2: klik tombol -> bicara, klik lagi saat bicara -> berhenti
+        binding.btnDengarkan.setOnClickListener {
+            if (tts.isSpeaking) {
+                tts.stop()
+                Toast.makeText(this, R.string.toast_tts_berhenti, Toast.LENGTH_SHORT).show()
+                Log.e("TTS", "Suara dihentikan oleh pengguna")
+            } else {
+                tts.speak(teksInfoGizi, TextToSpeech.QUEUE_FLUSH, null, "info_gizi")
+                Log.e("TTS", "Mulai membacakan info gizi $nama")
+            }
+        }
+
         // AlertDialog: konfirmasi sebelum mencatat
         binding.btnCatat.setOnClickListener {
             MaterialAlertDialogBuilder(this)
@@ -100,6 +125,24 @@ class SnackDetailActivity : AppCompatActivity() {
                     Log.e("Info Dialog", "Pengguna memilih Batal")
                 }
                 .show()
+        }
+    }
+
+    // FITUR BARU 2: dipanggil saat mesin TTS selesai disiapkan
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            // Atur bahasa Indonesia
+            val hasil = tts.setLanguage(Locale("id", "ID"))
+            if (hasil == TextToSpeech.LANG_MISSING_DATA || hasil == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Toast.makeText(this, R.string.toast_tts_gagal, Toast.LENGTH_LONG).show()
+                Log.e("TTS", "Bahasa Indonesia tidak tersedia, kode: $hasil")
+            } else {
+                binding.btnDengarkan.isEnabled = true
+                Log.e("TTS", "TTS siap, bahasa Indonesia aktif")
+            }
+        } else {
+            Toast.makeText(this, R.string.toast_tts_gagal, Toast.LENGTH_LONG).show()
+            Log.e("TTS", "Inisialisasi TTS gagal, status: $status")
         }
     }
 
@@ -260,7 +303,18 @@ class SnackDetailActivity : AppCompatActivity() {
         Log.e("onStart", "onStart: SnackDetailActivity terlihat di layar")
     }
 
+    // FITUR BARU 2: hentikan suara saat halaman tidak terlihat
+    override fun onStop() {
+        super.onStop()
+        tts.stop()
+        Log.e("TTS", "onStop: suara dihentikan")
+    }
+
     override fun onDestroy() {
+        // FITUR BARU 2: hentikan suara dan lepaskan mesin TTS
+        tts.stop()
+        tts.shutdown()
+        Log.e("TTS", "onDestroy: TTS di-shutdown")
         super.onDestroy()
         Log.e("onDestroy", "SnackDetailActivity dihapus dari stack")
     }

@@ -274,6 +274,22 @@
                 android:textColor="@color/abu_gelap"
                 android:fontFamily="@font/jakarta_regular" />
 
+            <!-- FITUR BARU 2: tombol Text-to-Speech, aktif setelah TTS siap -->
+            <Button
+                android:id="@+id/btnDengarkan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:paddingVertical="12dp"
+                android:enabled="false"
+                android:text="@string/btn_dengarkan"
+                android:textColor="@color/white"
+                android:fontFamily="@font/jakarta_bold"
+                android:backgroundTint="@color/abu_gelap"
+                app:icon="@drawable/ic_volume_up"
+                app:iconTint="@color/white"
+                app:iconGravity="textStart" />
+
             <Button
                 android:id="@+id/btnCatat"
                 android:layout_width="match_parent"
