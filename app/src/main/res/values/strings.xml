@@ -51,6 +51,18 @@
 
     <string name="btn_catat">Catat Konsumsi</string>
 
+    <!-- FITUR BARU 1: Grafik Gizi (MPAndroidChart) -->
+    <string name="judul_grafik">Grafik Gizi</string>
+    <string name="sub_pie">Komposisi gizi per sajian</string>
+    <string name="sub_bar">Persen batas harian per bungkus</string>
+    <string name="grafik_lemak">Lemak</string>
+    <string name="grafik_protein">Protein</string>
+    <string name="grafik_karbo">Karbohidrat</string>
+    <string name="grafik_gula">Gula</string>
+    <string name="grafik_natrium">Natrium</string>
+    <string name="grafik_kosong">Data gizi belum tersedia</string>
+    <string name="fmt_ringkasan_grafik">1 bungkus = %1$d%% batas gula, %2$d%% batas natrium, dan %3$d%% batas lemak harian.</string>
+
     <!-- AlertDialog & Snackbar -->
     <string name="dialog_title">Catat Konsumsi?</string>
     <string name="dialog_message">Kamu akan mencatat 1 bungkus %1$s.\nKandungan gula: %2$d g (batas harian 50 g).</string>

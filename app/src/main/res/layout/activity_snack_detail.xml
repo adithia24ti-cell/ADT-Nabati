@@ -187,6 +187,83 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- FITUR BARU 1: MaterialCardView grafik gizi (MPAndroidChart) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardGrafik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/white"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textJudulGrafik"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="16dp"
+                        android:background="@color/kuning_nabati"
+                        android:text="@string/judul_grafik"
+                        android:textSize="18sp"
+                        android:textColor="@color/tinta"
+                        android:fontFamily="@font/baloo2_extrabold" />
+
+                    <!-- PieChart komposisi lemak, protein, karbohidrat -->
+                    <TextView
+                        android:id="@+id/textSubPie"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:paddingHorizontal="16dp"
+                        android:text="@string/sub_pie"
+                        android:textSize="14sp"
+                        android:textColor="@color/abu_gelap"
+                        android:fontFamily="@font/jakarta_bold" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/pieGizi"
+                        android:layout_width="match_parent"
+                        android:layout_height="240dp"
+                        android:layout_marginTop="8dp"
+                        android:contentDescription="@string/sub_pie" />
+
+                    <!-- BarChart persen batas harian per bungkus -->
+                    <TextView
+                        android:id="@+id/textSubBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:paddingHorizontal="16dp"
+                        android:text="@string/sub_bar"
+                        android:textSize="14sp"
+                        android:textColor="@color/abu_gelap"
+                        android:fontFamily="@font/jakarta_bold" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barBatas"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:contentDescription="@string/sub_bar" />
+
+                    <TextView
+                        android:id="@+id/textRingkasanGrafik"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="12dp"
+                        android:paddingHorizontal="16dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/tinta"
+                        android:fontFamily="@font/jakarta_regular" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
             <TextView
                 android:id="@+id/textCatatan"
                 android:layout_width="match_parent"
