@@ -8,7 +8,6 @@
     android:background="@color/krem"
     tools:context=".Beranda.SnackDetailActivity">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
@@ -26,7 +25,6 @@
             app:layout_scrollFlags="scroll|enterAlways" />
 
     </com.google.android.material.appbar.AppBarLayout>
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -73,7 +71,7 @@
                 android:textColor="@color/tinta"
                 android:fontFamily="@font/jakarta_regular" />
 
-            <!-- MaterialCardView tabel gizi -->
+            <!-- Tabel gizi -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardGizi"
                 android:layout_width="match_parent"
@@ -187,7 +185,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- FITUR BARU 1: MaterialCardView grafik gizi (MPAndroidChart) -->
+            <!-- Grafik gizi -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardGrafik"
                 android:layout_width="match_parent"
@@ -213,7 +211,6 @@
                         android:textColor="@color/tinta"
                         android:fontFamily="@font/baloo2_extrabold" />
 
-                    <!-- PieChart komposisi lemak, protein, karbohidrat -->
                     <TextView
                         android:id="@+id/textSubPie"
                         android:layout_width="match_parent"
@@ -232,7 +229,6 @@
                         android:layout_marginTop="8dp"
                         android:contentDescription="@string/sub_pie" />
 
-                    <!-- BarChart persen batas harian per bungkus -->
                     <TextView
                         android:id="@+id/textSubBar"
                         android:layout_width="match_parent"
@@ -274,7 +270,7 @@
                 android:textColor="@color/abu_gelap"
                 android:fontFamily="@font/jakarta_regular" />
 
-            <!-- FITUR BARU 2: tombol Text-to-Speech, aktif setelah TTS siap -->
+            <!-- Tombol Text-to-Speech, aktif setelah TTS siap -->
             <Button
                 android:id="@+id/btnDengarkan"
                 android:layout_width="match_parent"

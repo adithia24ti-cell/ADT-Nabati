@@ -23,7 +23,6 @@ class BerandaFragment : Fragment() {
     ): View? {
         Log.e("onCreateView", "BerandaFragment ditampilkan")
 
-        /** Ganti menjadi versi binding */
         _binding = FragmentBerandaBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -31,20 +30,19 @@ class BerandaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Toolbar: berbeda dengan Activity, Fragment harus menggunakan (requireActivity() as AppCompatActivity)
+        // Di Fragment, toolbar dipasang lewat requireActivity()
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.menu_beranda)
         }
 
-        // Di Fragment, getSharedPreferences dipanggil lewat requireContext()
         val sharedPref = requireContext().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
 
         // Tampilkan username yang disimpan saat login
         val username = sharedPref.getString("username", "")
         binding.textSapaan.text = getString(R.string.label_sapaan_user, username)
 
-        // Card produk -> kirim data ke SnackDetailActivity
+        // Klik card membuka detail produk beserta data gizinya
         binding.cardRicheese.setOnClickListener {
             bukaDetail(getString(R.string.nama_richeese), getString(R.string.desc_richeese),
                 R.drawable.nabati_richeese, 37, 190, 10, 2, 24, 11, 70)
@@ -61,8 +59,7 @@ class BerandaFragment : Fragment() {
         }
     }
 
-    // Intent + putExtra: kirim data produk ke SnackDetailActivity
-    // this -> requireContext() karena sedang berada di Fragment
+    // Kirim data produk ke SnackDetailActivity
     private fun bukaDetail(
         nama: String, deskripsi: String, gambar: Int,
         takaran: Int, energi: Int, lemak: Int, protein: Int,

@@ -8,7 +8,6 @@
     android:background="@color/merah_nabati"
     tools:context=".SplashScreenActivity">
 
-    <!-- Logo aplikasi di tengah layar -->
     <ImageView
         android:id="@+id/imgLogoSplash"
         android:layout_width="150dp"
@@ -20,7 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.42" />
 
-    <!-- Nama aplikasi -->
     <TextView
         android:id="@+id/textNamaSplash"
         android:layout_width="wrap_content"
@@ -34,7 +32,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Slogan -->
     <TextView
         android:id="@+id/textSloganSplash"
         android:layout_width="wrap_content"
@@ -47,7 +44,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Identitas: kampus + versi -->
     <TextView
         android:id="@+id/textKampusSplash"
         android:layout_width="wrap_content"

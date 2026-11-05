@@ -30,22 +30,19 @@ class SplashScreenActivity : AppCompatActivity() {
             insets
         }
 
-        // Kode ini harus selalu dipanggil saat butuh akses "user_pref"
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
         lifecycleScope.launch {
             delay(2000) // simulasi pengambilan data selama 2 detik
 
-            // Pengecekan isLogin dipindahkan ke SplashScreen
+            // Tentukan halaman berikutnya dari status login
             val isLogin = sharedPref.getBoolean("isLogin", false)
             Log.e("Cek Login", "isLogin = $isLogin")
 
             if (isLogin) {
-                // Sudah login -> langsung ke BaseActivity (halaman utama dengan Bottom Navigation)
                 val intent = Intent(this@SplashScreenActivity, BaseActivity::class.java)
                 startActivity(intent)
             } else {
-                // Belum login -> ke halaman login (AuthActivity)
                 val intent = Intent(this@SplashScreenActivity, AuthActivity::class.java)
                 startActivity(intent)
             }

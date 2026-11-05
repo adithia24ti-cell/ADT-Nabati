@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.webkit.WebViewClient
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -29,7 +30,7 @@ class WebViewActivity : AppCompatActivity() {
             insets
         }
 
-        // Ambil data Intent (dari ProfileActivity). Jika kosong, pakai website Nabati
+        // Pakai website Nabati jika url dan judul tidak dikirim
         var url = intent.getStringExtra("url")
         var judul = intent.getStringExtra("judul")
         if (url == null) {
@@ -39,7 +40,6 @@ class WebViewActivity : AppCompatActivity() {
             judul = getString(R.string.title_web)
         }
 
-        // Mengaktifkan toolbar
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
             title = judul
@@ -59,6 +59,18 @@ class WebViewActivity : AppCompatActivity() {
                 binding.appBar.setExpanded(true, true)
             }
         }
+
+        // Back kembali ke halaman web sebelumnya, jika tidak ada halaman ditutup
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (binding.webView.canGoBack()) {
+                    binding.webView.goBack()
+                } else {
+                    isEnabled = false
+                    onBackPressedDispatcher.onBackPressed()
+                }
+            }
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -68,14 +80,6 @@ class WebViewActivity : AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-    override fun onBackPressed() {
-        if (binding.webView.canGoBack()) {
-            binding.webView.goBack()
-        } else {
-            super.onBackPressed()
         }
     }
 

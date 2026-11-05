@@ -28,30 +28,26 @@ class AuthActivity : AppCompatActivity() {
             insets
         }
 
-        // Kode ini harus selalu dipanggil saat butuh akses "user_pref"
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
         binding.btnLogin.setOnClickListener {
-            // Ambil isi EditText
             val username = binding.edtUsername.text.toString()
             val password = binding.edtPassword.text.toString()
             Log.e("Cek Login", "Username: $username")
 
-            // Autentikasi: username tidak boleh kosong dan harus sama dengan password
+            // Login berhasil jika username tidak kosong dan sama dengan password
             if (username.isNotEmpty() && username == password) {
-                // Berhasil -> simpan isLogin = true dan username
+                // Simpan status login dan username
                 val editor = sharedPref.edit()
                 editor.putBoolean("isLogin", true)
                 editor.putString("username", username)
                 editor.apply()
                 Log.e("Info Login", "Login berhasil, isLogin disimpan true")
 
-                // Ke BaseActivity (halaman utama dengan Bottom Navigation)
                 val intent = Intent(this, BaseActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
-                // Gagal -> tampilkan AlertDialog
                 Log.e("Info Login", "Login gagal")
                 MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.dialog_login_title)

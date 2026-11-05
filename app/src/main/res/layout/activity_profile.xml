@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Header: foto + identitas developer -->
+            <!-- Foto dan identitas developer -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardIdentitas"
                 android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                     android:gravity="center_horizontal"
                     android:padding="20dp">
 
-                    <!-- GANTI src dengan foto developer, contoh: @drawable/foto_developer -->
+                    <!-- Ganti src dengan foto developer -->
                     <ImageView
                         android:id="@+id/imgDeveloper"
                         android:layout_width="110dp"
@@ -170,7 +170,7 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Kekuatan Terbesar (warna kuning sebagai sorotan) -->
+            <!-- Kekuatan terbesar, warna kuning sebagai sorotan -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardKekuatan"
                 android:layout_width="match_parent"
@@ -241,7 +241,6 @@
                         android:textColor="@color/merah_nabati"
                         android:fontFamily="@font/jakarta_bold" />
 
-                    <!-- Instagram -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -260,7 +259,6 @@
                         android:textColor="@color/merah_nabati"
                         android:fontFamily="@font/jakarta_bold" />
 
-                    <!-- GitHub -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -279,7 +277,6 @@
                         android:textColor="@color/merah_nabati"
                         android:fontFamily="@font/jakarta_bold" />
 
-                    <!-- LinkedIn -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -298,7 +295,7 @@
                         android:textColor="@color/merah_nabati"
                         android:fontFamily="@font/jakarta_bold" />
 
-                    <!-- Email (teks saja) -->
+                    <!-- Email hanya berupa teks -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

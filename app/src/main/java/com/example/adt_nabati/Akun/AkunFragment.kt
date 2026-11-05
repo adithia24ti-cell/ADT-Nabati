@@ -25,7 +25,6 @@ class AkunFragment : Fragment() {
     ): View? {
         Log.e("onCreateView", "AkunFragment ditampilkan")
 
-        /** Ganti menjadi versi binding */
         _binding = FragmentAkunBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -33,26 +32,24 @@ class AkunFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Toolbar: berbeda dengan Activity, Fragment harus menggunakan (requireActivity() as AppCompatActivity)
+        // Di Fragment, toolbar dipasang lewat requireActivity()
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.menu_akun)
         }
 
-        // Di Fragment, getSharedPreferences dipanggil lewat requireContext()
         val sharedPref = requireContext().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
 
         // Tampilkan username yang disimpan saat login
         val username = sharedPref.getString("username", "")
         binding.textAkunDesc.text = getString(R.string.akun_desc, username)
 
-        // Ke halaman Profil Developer
         binding.btnProfil.setOnClickListener {
             val intent = Intent(requireContext(), ProfileActivity::class.java)
             startActivity(intent)
         }
 
-        // Logout: konfirmasi AlertDialog -> hapus sharedPreferences -> ke AuthActivity
+        // Konfirmasi logout, lalu hapus data login dan kembali ke halaman login
         binding.btnLogout.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle(R.string.logout_title)
@@ -66,7 +63,7 @@ class AkunFragment : Fragment() {
                     dialog.dismiss()
                     val intent = Intent(requireContext(), AuthActivity::class.java)
                     startActivity(intent)
-                    // Destroy BaseActivity lewat requireActivity() karena sedang di Fragment
+                    // Tutup BaseActivity agar tidak bisa kembali setelah logout
                     requireActivity().finish()
                 }
                 .setNegativeButton(R.string.dialog_batal) { dialog, _ ->

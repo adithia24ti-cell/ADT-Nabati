@@ -30,7 +30,6 @@ class ProfileActivity : AppCompatActivity() {
             insets
         }
 
-        // Toolbar dengan tombol kembali
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
             title = getString(R.string.title_profil)
@@ -39,7 +38,7 @@ class ProfileActivity : AppCompatActivity() {
             setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         }
 
-        // Sosial media dibuka di WebViewActivity (Intent + putExtra)
+        // Link sosial media dibuka di WebViewActivity
         binding.valInstagram.setOnClickListener {
             bukaWeb(getString(R.string.url_instagram), getString(R.string.label_instagram))
         }

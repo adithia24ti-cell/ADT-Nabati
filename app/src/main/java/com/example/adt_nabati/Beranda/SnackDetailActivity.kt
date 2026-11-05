@@ -30,7 +30,6 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private lateinit var binding: ActivitySnackDetailBinding
 
-    // FITUR BARU 2: objek Text-to-Speech
     private lateinit var tts: TextToSpeech
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +46,6 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             insets
         }
 
-        // Ambil data Intent
         val nama = intent.getStringExtra("nama")
         val deskripsi = intent.getStringExtra("deskripsi")
         val gambar = intent.getIntExtra("gambar", R.drawable.nabati_richeese)
@@ -70,7 +68,6 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         }
 
-        // Tampilkan data ke layout
         binding.imgSnack.setImageResource(gambar)
         binding.textNamaSnack.text = nama
         binding.textDeskripsi.text = deskripsi
@@ -82,19 +79,18 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         binding.valGula.text = getString(R.string.fmt_gram, gula)
         binding.valNatrium.text = getString(R.string.fmt_mg, natrium)
 
-        // FITUR BARU 1: tampilkan grafik gizi dari data Intent
         tampilkanPieGizi(lemak, protein, karbo, energi)
         tampilkanBarBatas(gula, natrium, lemak)
 
-        // FITUR BARU 2: siapkan Text-to-Speech, hasilnya diterima di onInit()
+        // Siapkan Text-to-Speech, hasilnya diterima di onInit
         tts = TextToSpeech(this, this)
 
-        // FITUR BARU 2: kalimat info gizi yang dibacakan (dari strings.xml)
+        // Kalimat info gizi yang dibacakan
         val teksInfoGizi = getString(
             R.string.tts_info_gizi, nama, takaran, energi, gula, natrium, lemak, gula * 100 / 50
         )
 
-        // FITUR BARU 2: klik tombol -> bicara, klik lagi saat bicara -> berhenti
+        // Klik untuk mulai bicara, klik lagi untuk berhenti
         binding.btnDengarkan.setOnClickListener {
             if (tts.isSpeaking) {
                 tts.stop()
@@ -106,7 +102,7 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
         }
 
-        // AlertDialog: konfirmasi sebelum mencatat
+        // Konfirmasi sebelum mencatat konsumsi
         binding.btnCatat.setOnClickListener {
             MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.dialog_title)
@@ -128,10 +124,9 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
 
-    // FITUR BARU 2: dipanggil saat mesin TTS selesai disiapkan
+    // Dipanggil saat mesin TTS selesai disiapkan
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
-            // Atur bahasa Indonesia
             val hasil = tts.setLanguage(Locale("id", "ID"))
             if (hasil == TextToSpeech.LANG_MISSING_DATA || hasil == TextToSpeech.LANG_NOT_SUPPORTED) {
                 Toast.makeText(this, R.string.toast_tts_gagal, Toast.LENGTH_LONG).show()
@@ -146,24 +141,22 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
 
-    // FITUR BARU 1: PieChart komposisi lemak, protein, karbohidrat per sajian
+    // PieChart komposisi lemak, protein, dan karbohidrat per sajian
     private fun tampilkanPieGizi(lemak: Int, protein: Int, karbo: Int, energi: Int) {
         val pieChart = binding.pieGizi
         pieChart.setNoDataText(getString(R.string.grafik_kosong))
 
-        // Jika semua data 0, grafik tidak digambar (persen tidak bisa dihitung)
         if (lemak + protein + karbo == 0) {
             Log.e("Grafik Gizi", "Data pie kosong, grafik tidak ditampilkan")
             return
         }
 
-        // Data potongan pie (gram per sajian)
+        // Data potongan pie dalam gram per sajian
         val entries: ArrayList<PieEntry> = ArrayList()
         entries.add(PieEntry(lemak.toFloat(), getString(R.string.grafik_lemak)))
         entries.add(PieEntry(protein.toFloat(), getString(R.string.grafik_protein)))
         entries.add(PieEntry(karbo.toFloat(), getString(R.string.grafik_karbo)))
 
-        // Warna tiap potongan dari palet ADT-Nabati
         val colors: ArrayList<Int> = ArrayList()
         colors.add(getColor(R.color.merah_nabati))
         colors.add(getColor(R.color.abu_gelap))
@@ -174,7 +167,6 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         dataSet.sliceSpace = 3f
         dataSet.selectionShift = 5f
 
-        // Nilai ditampilkan dalam persen
         val data = PieData(dataSet)
         data.setValueFormatter(PercentFormatter(pieChart))
         data.setValueTextSize(12f)
@@ -201,23 +193,21 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         Log.e("Grafik Gizi", "Pie: lemak $lemak g, protein $protein g, karbo $karbo g, energi $energi kkal")
     }
 
-    // FITUR BARU 1: BarChart persen batas harian Kemenkes per bungkus
+    // BarChart persen batas harian Kemenkes per bungkus
     private fun tampilkanBarBatas(gula: Int, natrium: Int, lemak: Int) {
         val barChart = binding.barBatas
         barChart.setNoDataText(getString(R.string.grafik_kosong))
 
-        // Hitung persen dari batas harian (gula 50 g, natrium 2.000 mg, lemak 67 g)
+        // Hitung persen dari batas harian
         val persenGula = gula * 100 / 50
         val persenNatrium = natrium * 100 / 2000
         val persenLemak = lemak * 100 / 67
 
-        // Data batang: indeks 0 = Gula, 1 = Natrium, 2 = Lemak
         val entries: ArrayList<BarEntry> = ArrayList()
         entries.add(BarEntry(0f, persenGula.toFloat()))
         entries.add(BarEntry(1f, persenNatrium.toFloat()))
         entries.add(BarEntry(2f, persenLemak.toFloat()))
 
-        // Warna batang sesuai status persen
         val colors: ArrayList<Int> = ArrayList()
         colors.add(warnaStatus(persenGula))
         colors.add(warnaStatus(persenNatrium))
@@ -232,7 +222,6 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         val data = BarData(dataSet)
         data.barWidth = 0.5f
 
-        // Label sumbu X dari strings.xml
         val labels = arrayOf(
             getString(R.string.grafik_gula),
             getString(R.string.grafik_natrium),
@@ -257,14 +246,13 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         barChart.animateY(1400)
         barChart.invalidate()
 
-        // Kalimat ringkasan di bawah grafik
         binding.textRingkasanGrafik.text =
             getString(R.string.fmt_ringkasan_grafik, persenGula, persenNatrium, persenLemak)
 
         Log.e("Grafik Gizi", "Bar: gula $persenGula%, natrium $persenNatrium%, lemak $persenLemak% dari batas harian")
     }
 
-    // FITUR BARU 1: warna status aturan 5/20 (<= 5% rendah, 6–19% sedang, >= 20% tinggi)
+    // Warna status aturan 5/20: sampai 5% rendah, di bawah 20% sedang, selebihnya tinggi
     private fun warnaStatus(persen: Int): Int {
         if (persen <= 5) {
             return getColor(R.color.hijau_aman)
@@ -303,7 +291,7 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         Log.e("onStart", "onStart: SnackDetailActivity terlihat di layar")
     }
 
-    // FITUR BARU 2: hentikan suara saat halaman tidak terlihat
+    // Hentikan suara saat halaman tidak terlihat
     override fun onStop() {
         super.onStop()
         tts.stop()
@@ -311,7 +299,7 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     override fun onDestroy() {
-        // FITUR BARU 2: hentikan suara dan lepaskan mesin TTS
+        // Hentikan suara dan lepaskan mesin TTS
         tts.stop()
         tts.shutdown()
         Log.e("TTS", "onDestroy: TTS di-shutdown")

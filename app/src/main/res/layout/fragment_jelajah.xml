@@ -7,7 +7,6 @@
     android:background="@color/krem"
     tools:context=".Jelajah.JelajahFragment">
 
-    <!-- Toolbar Fragment (cukup ConstraintLayout, tanpa CoordinatorLayout) -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -45,7 +44,7 @@
         app:layout_constraintStart_toStartOf="@id/textJelajahJudul"
         app:layout_constraintEnd_toEndOf="@id/textJelajahJudul" />
 
-    <!-- Card + Tombol ke halaman WebView -->
+    <!-- Card dan tombol ke WebViewActivity -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardWeb"
         android:layout_width="0dp"

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ADT-Nabati</string>
 
-    <!-- BerandaFragment & JelajahFragment (sebelumnya MainActivity) -->
+    <!-- Beranda dan Jelajah -->
     <string name="app_title">ADT-Nabati</string>
     <string name="app_tagline">Ngemil tetap asyik, gizi tetap terjaga</string>
     <string name="label_sapaan">Mau ngemil apa hari ini?</string>
@@ -10,7 +10,7 @@
     <string name="web_card_desc">Lihat semua produk resmi di website Nabati.</string>
     <string name="btn_web_view">Website Nabati</string>
 
-    <!-- Data produk (GANTI angka gizi sesuai label kemasan asli) -->
+    <!-- Data produk, angka gizi perlu sesuai label kemasan -->
     <string name="nama_richeese">Richeese Wafer Keju</string>
     <string name="desc_richeese">Wafer renyah berlapis krim keju gurih-manis. Snack favorit anak-anak hingga dewasa karena rasa kejunya yang khas dan teksturnya yang crispy.</string>
     <string name="info_richeese">37 g · 190 kkal · Gula 11 g</string>
@@ -33,7 +33,7 @@
     <string name="toast_favorit">Ditambahkan ke favorit</string>
     <string name="toast_info">Batas gula harian anjuran Kemenkes: 50 g</string>
 
-    <!-- SnackDetailActivity -->
+    <!-- Detail produk -->
     <string name="snack_produsen">PT Kaldu Sari Nabati Indonesia · Bandung</string>
     <string name="judul_gizi">Informasi Nilai Gizi</string>
     <string name="label_takaran">Takaran saji</string>
@@ -51,7 +51,7 @@
 
     <string name="btn_catat">Catat Konsumsi</string>
 
-    <!-- FITUR BARU 1: Grafik Gizi (MPAndroidChart) -->
+    <!-- Grafik gizi -->
     <string name="judul_grafik">Grafik Gizi</string>
     <string name="sub_pie">Komposisi gizi per sajian</string>
     <string name="sub_bar">Persen batas harian per bungkus</string>
@@ -63,13 +63,13 @@
     <string name="grafik_kosong">Data gizi belum tersedia</string>
     <string name="fmt_ringkasan_grafik">1 bungkus = %1$d%% batas gula, %2$d%% batas natrium, dan %3$d%% batas lemak harian.</string>
 
-    <!-- FITUR BARU 2: Dengarkan Info Gizi (Text-to-Speech) -->
+    <!-- Text-to-Speech info gizi -->
     <string name="btn_dengarkan">Dengarkan Info Gizi</string>
     <string name="tts_info_gizi">%1$s. Satu bungkus %2$d gram mengandung energi %3$d kilokalori, gula %4$d gram, natrium %5$d miligram, dan lemak %6$d gram. Gula ini setara %7$d persen batas gula harian.</string>
     <string name="toast_tts_berhenti">Suara dihentikan</string>
     <string name="toast_tts_gagal">Suara Bahasa Indonesia belum tersedia di perangkat</string>
 
-    <!-- AlertDialog & Snackbar -->
+    <!-- AlertDialog dan Snackbar -->
     <string name="dialog_title">Catat Konsumsi?</string>
     <string name="dialog_message">Kamu akan mencatat 1 bungkus %1$s.\nKandungan gula: %2$d g (batas harian 50 g).</string>
     <string name="dialog_ya">Ya, Catat</string>
@@ -77,11 +77,11 @@
     <string name="snackbar_tercatat">%1$s berhasil dicatat</string>
     <string name="snackbar_undo">Batalkan</string>
 
-    <!-- Pertemuan 6: SplashScreen -->
+    <!-- Splash screen -->
     <string name="splash_kampus">Teknik Informatika · Politeknik Caltex Riau</string>
     <string name="splash_versi">VERSI 1.0</string>
 
-    <!-- Pertemuan 6: AuthActivity (Login) -->
+    <!-- Login -->
     <string name="auth_judul">Selamat Datang!</string>
     <string name="auth_sub">Masuk dulu untuk mulai pantau camilanmu</string>
     <string name="hint_username">Username</string>
@@ -91,7 +91,7 @@
     <string name="dialog_login_message">Silahkan coba lagi</string>
     <string name="dialog_ok">OK</string>
 
-    <!-- Pertemuan 6: Akun & Logout (Pertemuan 7: dipindah ke AkunFragment) -->
+    <!-- Akun dan logout -->
     <string name="label_sapaan_user">Hai, %1$s! Mau ngemil apa hari ini?</string>
     <string name="akun_title">Akun Kamu</string>
     <string name="akun_desc">Masuk sebagai %1$s</string>
@@ -101,7 +101,7 @@
     <string name="logout_message">Kamu perlu login lagi untuk membuka ADT-Nabati.</string>
     <string name="logout_ya">Ya</string>
 
-    <!-- Pertemuan 6: ProfileActivity (GANTI semua data dev_ sesuai data asli developer) -->
+    <!-- Profil developer -->
     <string name="title_profil">Profil Developer</string>
     <string name="label_tentang">TENTANG SAYA</string>
     <string name="label_hobi">HOBI</string>
@@ -128,7 +128,7 @@
     <string name="url_github">https://github.com/adithia24ti-cell</string>
     <string name="url_linkedin">https://www.linkedin.com/in/adithia</string>
 
-    <!-- Pertemuan 7: Bottom Navigation -->
+    <!-- Bottom Navigation -->
     <string name="menu_beranda">Beranda</string>
     <string name="menu_jelajah">Jelajah</string>
     <string name="menu_akun">Akun</string>

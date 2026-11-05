@@ -7,7 +7,6 @@
     android:background="@color/krem"
     tools:context=".Akun.AkunFragment">
 
-    <!-- Toolbar Fragment (cukup ConstraintLayout, tanpa CoordinatorLayout) -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -18,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Card Akun: Profil Developer + Logout -->
+    <!-- Card profil developer dan logout -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardAkun"
         android:layout_width="0dp"

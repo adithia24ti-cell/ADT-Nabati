@@ -7,7 +7,6 @@
     android:background="@color/krem"
     tools:context=".Beranda.BerandaFragment">
 
-    <!-- Toolbar Fragment (cukup ConstraintLayout, tanpa CoordinatorLayout) -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -18,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Isi Beranda (dipindah dari activity_main): header, sapaan, card produk -->
+    <!-- Header, sapaan, dan card produk -->
     <ScrollView
         android:id="@+id/scrollBeranda"
         android:layout_width="match_parent"
@@ -34,7 +33,7 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- Header: Logo + Judul Aplikasi -->
+            <!-- Logo dan judul aplikasi -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardHeader"
                 android:layout_width="match_parent"
@@ -105,7 +104,6 @@
                 android:textColor="@color/abu_gelap"
                 android:fontFamily="@font/jakarta_regular" />
 
-            <!-- Card: nama_richeese -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardRicheese"
                 android:layout_width="match_parent"
@@ -158,7 +156,6 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card: nama_richoco -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardRichoco"
                 android:layout_width="match_parent"
@@ -211,7 +208,6 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card: nama_rolls -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardRolls"
                 android:layout_width="match_parent"

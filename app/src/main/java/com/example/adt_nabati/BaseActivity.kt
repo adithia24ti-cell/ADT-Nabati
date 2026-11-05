@@ -14,15 +14,15 @@ import com.example.adt_nabati.databinding.ActivityBaseBinding
 
 class BaseActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityBaseBinding // 1
+    private lateinit var binding: ActivityBaseBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.e("onCreate", "BaseActivity dibuat pertama kali")
         enableEdgeToEdge()
 
-        binding = ActivityBaseBinding.inflate(layoutInflater) // 2
-        setContentView(binding.root)  // 3
+        binding = ActivityBaseBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -49,7 +49,7 @@ class BaseActivity : AppCompatActivity() {
                     replaceFragment(AkunFragment())
                     true
                 }
-                else -> false // return false jika item tidak ada yang di klik
+                else -> false
             }
         }
     }
@@ -57,7 +57,7 @@ class BaseActivity : AppCompatActivity() {
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(binding.fragmentContainer.id, fragment)
-            //.addToBackStack(null) -> dinonaktifkan agar saat back langsung keluar aplikasi
+            // Tanpa addToBackStack agar tombol back langsung keluar aplikasi
             .commit()
     }
 

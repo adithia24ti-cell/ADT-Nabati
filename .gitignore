@@ -14,3 +14,11 @@
 .cxx
 local.properties
 /.idea/
+.kotlin/
+*.log
+*.apk
+*.aab
+*.jks
+*.keystore
+Thumbs.db
+desktop.ini

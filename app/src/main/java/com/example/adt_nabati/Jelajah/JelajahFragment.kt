@@ -22,7 +22,6 @@ class JelajahFragment : Fragment() {
     ): View? {
         Log.e("onCreateView", "JelajahFragment ditampilkan")
 
-        /** Ganti menjadi versi binding */
         _binding = FragmentJelajahBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -30,13 +29,13 @@ class JelajahFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Toolbar: berbeda dengan Activity, Fragment harus menggunakan (requireActivity() as AppCompatActivity)
+        // Di Fragment, toolbar dipasang lewat requireActivity()
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.menu_jelajah)
         }
 
-        // Ke WebViewActivity (website Nabati), this -> requireContext()
+        // Buka website Nabati di WebViewActivity
         binding.btnWebView.setOnClickListener {
             val intent = Intent(requireContext(), WebViewActivity::class.java)
             startActivity(intent)
