@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/krem"
+    tools:context=".Beranda.BatasLemakFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Card batas harian lemak -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBatas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/oranye_waspada"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:id="@+id/textJudulBatas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/batas_lemak_judul"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/jakarta_bold" />
+
+                <TextView
+                    android:id="@+id/textNilaiBatas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/batas_lemak_nilai"
+                    android:textSize="40sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/baloo2_extrabold" />
+
+                <TextView
+                    android:id="@+id/textSetaraBatas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/batas_lemak_setara"
+                    android:textSize="14sp"
+                    android:textColor="@color/kuning_nabati"
+                    android:fontFamily="@font/jakarta_bold" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textPenjelasanBatas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/batas_lemak_penjelasan"
+            android:textSize="14sp"
+            android:textColor="@color/tinta"
+            android:fontFamily="@font/jakarta_regular" />
+
+        <TextView
+            android:id="@+id/textLabelProduk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/label_per_bungkus"
+            android:textSize="18sp"
+            android:textColor="@color/tinta"
+            android:fontFamily="@font/baloo2_extrabold" />
+
+        <!-- Persen tiap produk, diisi dari Fragment -->
+        <TextView
+            android:id="@+id/textDaftarProduk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp"
+            android:background="@drawable/bg_rounded_container"
+            android:lineSpacingExtra="6dp"
+            android:textSize="14sp"
+            android:textColor="@color/tinta"
+            android:fontFamily="@font/jakarta_regular" />
+
+        <TextView
+            android:id="@+id/textSumberBatas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/batas_sumber"
+            android:textSize="12sp"
+            android:textColor="@color/abu_gelap"
+            android:fontFamily="@font/jakarta_regular" />
+
+    </LinearLayout>
+
+</ScrollView>
