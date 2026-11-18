@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SimpleAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.adt_nabati.AuthActivity
@@ -43,6 +45,31 @@ class AkunFragment : Fragment() {
         // Tampilkan username yang disimpan saat login
         val username = sharedPref.getString("username", "")
         binding.textAkunDesc.text = getString(R.string.akun_desc, username)
+
+        // Data menu berupa pasangan judul dan keterangan untuk simple_list_item_2
+        val menuAkun = listOf(
+            mapOf("judul" to getString(R.string.menu_target), "keterangan" to getString(R.string.desc_target)),
+            mapOf("judul" to getString(R.string.menu_sumber), "keterangan" to getString(R.string.desc_sumber)),
+            mapOf("judul" to getString(R.string.menu_tentang), "keterangan" to getString(R.string.desc_tentang)),
+            mapOf("judul" to getString(R.string.menu_catatan), "keterangan" to getString(R.string.desc_catatan))
+        )
+
+        val adapter = SimpleAdapter(
+            requireContext(),
+            menuAkun,
+            android.R.layout.simple_list_item_2,
+            arrayOf("judul", "keterangan"),
+            intArrayOf(android.R.id.text1, android.R.id.text2)
+        )
+        binding.listMenuAkun.adapter = adapter
+
+        binding.listMenuAkun.setOnItemClickListener { _, _, position, _ ->
+            val menuDipilih = menuAkun[position]
+            val judul = menuDipilih["judul"]
+            val keterangan = menuDipilih["keterangan"]
+            Log.e("Menu Akun", "Menu dipilih: $judul")
+            Toast.makeText(requireContext(), getString(R.string.toast_menu_akun, judul, keterangan), Toast.LENGTH_SHORT).show()
+        }
 
         binding.btnProfil.setOnClickListener {
             val intent = Intent(requireContext(), ProfileActivity::class.java)

@@ -13,15 +13,12 @@
     <!-- Data produk, angka gizi perlu sesuai label kemasan -->
     <string name="nama_richeese">Richeese Wafer Keju</string>
     <string name="desc_richeese">Wafer renyah berlapis krim keju gurih-manis. Snack favorit anak-anak hingga dewasa karena rasa kejunya yang khas dan teksturnya yang crispy.</string>
-    <string name="info_richeese">37 g · 190 kkal · Gula 11 g</string>
 
     <string name="nama_richoco">Richoco Wafer Cokelat</string>
     <string name="desc_richoco">Wafer renyah dengan lapisan krim cokelat yang manis. Cocok untuk teman santai atau camilan di sela aktivitas.</string>
-    <string name="info_richoco">37 g · 185 kkal · Gula 12 g</string>
 
     <string name="nama_rolls">Nabati Rolls Richeese</string>
     <string name="desc_rolls">Wafer gulung berisi krim keju. Bentuknya praktis dan mudah dibawa ke mana saja.</string>
-    <string name="info_rolls">33 g · 170 kkal · Gula 10 g</string>
 
     <!-- Judul Toolbar -->
     <string name="title_detail">Detail Produk</string>
@@ -90,6 +87,8 @@
     <string name="dialog_login_title">Login Gagal</string>
     <string name="dialog_login_message">Silahkan coba lagi</string>
     <string name="dialog_ok">OK</string>
+    <string name="error_username_kosong">Username wajib diisi</string>
+    <string name="error_password_kosong">Password wajib diisi</string>
 
     <!-- Akun dan logout -->
     <string name="label_sapaan_user">Hai, %1$s! Mau ngemil apa hari ini?</string>
@@ -134,4 +133,84 @@
     <string name="menu_akun">Akun</string>
     <string name="jelajah_judul">Jelajahi Nabati</string>
     <string name="jelajah_sub">Cari tahu lebih banyak tentang produk dan info resmi Nabati.</string>
+
+    <!-- Katalog produk -->
+    <string name="title_katalog">Katalog Produk</string>
+    <string name="btn_katalog">Lihat Semua Produk</string>
+    <string name="chip_semua">Semua</string>
+    <string name="chip_keju">Keju</string>
+    <string name="chip_cokelat">Cokelat</string>
+    <string name="toast_filter">Filter: %1$s</string>
+    <string name="fmt_jumlah_produk">%1$d produk</string>
+    <string name="fmt_info_produk">%1$d g · %2$d kkal · Gula %3$d g</string>
+    <string name="fmt_persen_gula">%1$d%% batas gula harian</string>
+    <string name="desc_gambar_produk">Gambar produk</string>
+
+    <!-- Grid batas harian di Beranda -->
+    <string name="label_batas_harian">Batas Harian Kemenkes</string>
+    <string name="grid_gula">Gula\n50 g</string>
+    <string name="grid_natrium">Natrium\n2.000 mg</string>
+    <string name="grid_lemak">Lemak\n67 g</string>
+
+    <!-- Menu akun -->
+    <string name="label_menu_akun">Info Aplikasi</string>
+    <string name="menu_target">Target Harian</string>
+    <string name="desc_target">Gula 50 g · Natrium 2.000 mg · Lemak 67 g (anjuran Kemenkes)</string>
+    <string name="menu_sumber">Sumber Data Gizi</string>
+    <string name="desc_sumber">Label kemasan produk Nabati</string>
+    <string name="menu_tentang">Tentang Aplikasi</string>
+    <string name="desc_tentang">ADT-Nabati versi 1.0 · Proyek Akhir Mobile</string>
+    <string name="menu_catatan">Catatan</string>
+    <string name="desc_catatan">ADT-Nabati bukan aplikasi resmi Nabati</string>
+    <string name="toast_menu_akun">%1$s: %2$s</string>
+
+    <!-- Tips ngemil di Jelajah -->
+    <string name="label_tips">Tips Ngemil Sehat</string>
+    <string name="tip_label">Baca label gizi sebelum membeli camilan</string>
+    <string name="tip_gula">Batas gula harian 50 g (anjuran Kemenkes)</string>
+    <string name="tip_natrium">Batas natrium harian 2.000 mg (anjuran Kemenkes)</string>
+    <string name="tip_lemak">Batas lemak harian 67 g (anjuran Kemenkes)</string>
+    <string name="tip_wafer">1 bungkus wafer 37 g berisi gula 11–12 g, sekitar 22–24% batas harian</string>
+    <string name="tip_grafik">Lihat Grafik Gizi di halaman Detail Produk</string>
+    <string name="tip_catat">Catat camilan agar asupan harian terpantau</string>
+    <string name="toast_tips">Ingat: %1$s</string>
+
+    <!-- Grid produk di Beranda -->
+    <string name="menu_panduan">Panduan</string>
+    <string name="fmt_info_grid">%1$d kkal · %2$d g</string>
+    <string name="status_gula_rendah">Gula rendah · %1$d%%</string>
+    <string name="status_gula_sedang">Gula sedang · %1$d%%</string>
+    <string name="status_gula_tinggi">Gula tinggi · %1$d%%</string>
+
+    <!-- Halaman Batas Harian -->
+    <string name="title_batas_harian">Batas Harian</string>
+    <string name="label_per_bungkus">Per Bungkus Produk</string>
+    <string name="fmt_baris_batas">• %1$s: %2$d %3$s (%4$d%% · %5$s)</string>
+    <string name="satuan_gram">g</string>
+    <string name="satuan_miligram">mg</string>
+    <string name="status_rendah">rendah</string>
+    <string name="status_sedang">sedang</string>
+    <string name="status_tinggi">tinggi</string>
+    <string name="batas_gula_judul">Batas Gula Harian</string>
+    <string name="batas_gula_nilai">50 g</string>
+    <string name="batas_gula_setara">Setara 4 sendok makan gula</string>
+    <string name="batas_gula_penjelasan">Gula dari makanan dan minuman sebaiknya tidak lebih dari 50 g per orang per hari. Satu bungkus wafer sudah memakai sekitar seperlimanya.</string>
+    <string name="batas_natrium_judul">Batas Natrium Harian</string>
+    <string name="batas_natrium_nilai">2.000 mg</string>
+    <string name="batas_natrium_setara">Setara 1 sendok teh garam (5 g)</string>
+    <string name="batas_natrium_penjelasan">Natrium berasal dari garam dan bumbu. Asupan berlebih dapat meningkatkan risiko tekanan darah tinggi.</string>
+    <string name="batas_lemak_judul">Batas Lemak Harian</string>
+    <string name="batas_lemak_nilai">67 g</string>
+    <string name="batas_lemak_setara">Setara 5 sendok makan minyak</string>
+    <string name="batas_lemak_penjelasan">Lemak tetap dibutuhkan tubuh, tetapi totalnya sebaiknya tidak lebih dari 67 g per orang per hari.</string>
+    <string name="batas_sumber">Sumber: Permenkes No. 30 Tahun 2013. Status memakai aturan 5/20: sampai 5% rendah, 6–19% sedang, 20% ke atas tinggi.</string>
+
+    <!-- Onboarding -->
+    <string name="btn_mulai">Mulai Sekarang</string>
+    <string name="onboard_gizi_judul">Ngemil boleh, asal tahu gizinya.</string>
+    <string name="onboard_gizi_desc">Lihat nilai gizi tiap produk Nabati lengkap dengan Grafik Gizi, atau dengarkan info gizinya.</string>
+    <string name="onboard_catat_judul">Catat Camilan dalam 1 Tap</string>
+    <string name="onboard_catat_desc">Tekan Catat Konsumsi di halaman detail produk setiap kali kamu ngemil.</string>
+    <string name="onboard_batas_judul">Pantau Batas Harian</string>
+    <string name="onboard_batas_desc">Bandingkan gula, natrium, dan lemak tiap bungkus dengan batas Kemenkes: gula 50 g, natrium 2.000 mg, lemak 67 g.</string>
 </resources>

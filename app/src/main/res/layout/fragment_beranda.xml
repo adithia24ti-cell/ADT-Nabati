@@ -7,6 +7,16 @@
     android:background="@color/krem"
     tools:context=".Beranda.BerandaFragment">
 
+    <!-- Header gelombang, ditulis pertama agar berada di belakang Toolbar dan isi -->
+    <View
+        android:id="@+id/bgHeaderBeranda"
+        android:layout_width="0dp"
+        android:layout_height="260dp"
+        android:background="@drawable/bg_header_gelombang"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -17,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Header, sapaan, dan card produk -->
+    <!-- Header, batas harian, dan grid produk -->
     <ScrollView
         android:id="@+id/scrollBeranda"
         android:layout_width="match_parent"
@@ -86,6 +96,65 @@
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
+                android:id="@+id/textBatasJudul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/label_batas_harian"
+                android:textSize="16sp"
+                android:textColor="@color/tinta"
+                android:fontFamily="@font/jakarta_bold" />
+
+            <!-- Tiga tombol batas harian Kemenkes dalam 3 kolom sama lebar -->
+            <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/gridBatas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:columnCount="3"
+                app:useDefaultMargins="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBatasGula"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/grid_gula"
+                    android:textSize="13sp"
+                    android:textColor="@color/tinta"
+                    android:fontFamily="@font/jakarta_bold"
+                    android:backgroundTint="@color/kuning_nabati"
+                    app:cornerRadius="16dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBatasNatrium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/grid_natrium"
+                    android:textSize="13sp"
+                    android:textColor="@color/tinta"
+                    android:fontFamily="@font/jakarta_bold"
+                    android:backgroundTint="@color/kuning_nabati"
+                    app:cornerRadius="16dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBatasLemak"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/grid_lemak"
+                    android:textSize="13sp"
+                    android:textColor="@color/tinta"
+                    android:fontFamily="@font/jakarta_bold"
+                    android:backgroundTint="@color/kuning_nabati"
+                    app:cornerRadius="16dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+            </androidx.gridlayout.widget.GridLayout>
+
+            <TextView
                 android:id="@+id/textSapaan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,161 +173,25 @@
                 android:textColor="@color/abu_gelap"
                 android:fontFamily="@font/jakarta_regular" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardRicheese"
+            <!-- Grid produk 2 kolom, diisi ProdukGridAdapter -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProduk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:backgroundTint="@color/white"
-                app:cardElevation="4dp">
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp">
-
-                    <ImageView
-                        android:id="@+id/img_cardRicheese"
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:src="@drawable/nabati_richeese"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <TextView
-                        android:id="@+id/nama_cardRicheese"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
-                        android:text="@string/nama_richeese"
-                        android:textSize="16sp"
-                        android:textColor="@color/tinta"
-                        android:fontFamily="@font/jakarta_bold"
-                        app:layout_constraintTop_toTopOf="@id/img_cardRicheese"
-                        app:layout_constraintStart_toEndOf="@id/img_cardRicheese"
-                        app:layout_constraintEnd_toEndOf="parent" />
-
-                    <TextView
-                        android:id="@+id/info_cardRicheese"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="@string/info_richeese"
-                        android:textSize="13sp"
-                        android:textColor="@color/abu_gelap"
-                        android:fontFamily="@font/jakarta_regular"
-                        app:layout_constraintTop_toBottomOf="@id/nama_cardRicheese"
-                        app:layout_constraintStart_toStartOf="@id/nama_cardRicheese"
-                        app:layout_constraintEnd_toEndOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardRichoco"
+            <!-- Tombol ke halaman Katalog Produk -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKatalog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:backgroundTint="@color/white"
-                app:cardElevation="4dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp">
-
-                    <ImageView
-                        android:id="@+id/img_cardRichoco"
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:src="@drawable/nabati_richoco"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <TextView
-                        android:id="@+id/nama_cardRichoco"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
-                        android:text="@string/nama_richoco"
-                        android:textSize="16sp"
-                        android:textColor="@color/tinta"
-                        android:fontFamily="@font/jakarta_bold"
-                        app:layout_constraintTop_toTopOf="@id/img_cardRichoco"
-                        app:layout_constraintStart_toEndOf="@id/img_cardRichoco"
-                        app:layout_constraintEnd_toEndOf="parent" />
-
-                    <TextView
-                        android:id="@+id/info_cardRichoco"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="@string/info_richoco"
-                        android:textSize="13sp"
-                        android:textColor="@color/abu_gelap"
-                        android:fontFamily="@font/jakarta_regular"
-                        app:layout_constraintTop_toBottomOf="@id/nama_cardRichoco"
-                        app:layout_constraintStart_toStartOf="@id/nama_cardRichoco"
-                        app:layout_constraintEnd_toEndOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardRolls"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:backgroundTint="@color/white"
-                app:cardElevation="4dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp">
-
-                    <ImageView
-                        android:id="@+id/img_cardRolls"
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:src="@drawable/nabati_rolls"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <TextView
-                        android:id="@+id/nama_cardRolls"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
-                        android:text="@string/nama_rolls"
-                        android:textSize="16sp"
-                        android:textColor="@color/tinta"
-                        android:fontFamily="@font/jakarta_bold"
-                        app:layout_constraintTop_toTopOf="@id/img_cardRolls"
-                        app:layout_constraintStart_toEndOf="@id/img_cardRolls"
-                        app:layout_constraintEnd_toEndOf="parent" />
-
-                    <TextView
-                        android:id="@+id/info_cardRolls"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="@string/info_rolls"
-                        android:textSize="13sp"
-                        android:textColor="@color/abu_gelap"
-                        android:fontFamily="@font/jakarta_regular"
-                        app:layout_constraintTop_toBottomOf="@id/nama_cardRolls"
-                        app:layout_constraintStart_toStartOf="@id/nama_cardRolls"
-                        app:layout_constraintEnd_toEndOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.card.MaterialCardView>
+                android:layout_marginTop="16dp"
+                android:text="@string/btn_katalog"
+                android:textColor="@color/white"
+                android:fontFamily="@font/jakarta_bold"
+                android:backgroundTint="@color/merah_nabati"
+                app:cornerRadius="20dp" />
 
         </LinearLayout>
 

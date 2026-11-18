@@ -35,8 +35,21 @@ class AuthActivity : AppCompatActivity() {
             val password = binding.edtPassword.text.toString()
             Log.e("Cek Login", "Username: $username")
 
-            // Login berhasil jika username tidak kosong dan sama dengan password
-            if (username.isNotEmpty() && username == password) {
+            // Hapus pesan error dari percobaan sebelumnya
+            binding.tilUsername.error = null
+            binding.tilPassword.error = null
+
+            // Kolom kosong ditandai langsung di bawah input, tanpa dialog
+            if (username.isEmpty() || password.isEmpty()) {
+                if (username.isEmpty()) {
+                    binding.tilUsername.error = getString(R.string.error_username_kosong)
+                }
+                if (password.isEmpty()) {
+                    binding.tilPassword.error = getString(R.string.error_password_kosong)
+                }
+                Log.e("Info Login", "Login gagal, ada kolom kosong")
+            } else if (username == password) {
+                // Login berhasil jika username sama dengan password
                 // Simpan status login dan username
                 val editor = sharedPref.edit()
                 editor.putBoolean("isLogin", true)

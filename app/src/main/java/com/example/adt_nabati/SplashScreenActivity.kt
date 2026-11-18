@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.adt_nabati.Onboarding.OnboardingActivity
 import com.example.adt_nabati.databinding.ActivitySplashScreenBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -31,6 +32,7 @@ class SplashScreenActivity : AppCompatActivity() {
         }
 
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        val appPref = getSharedPreferences("app_pref", MODE_PRIVATE)
 
         lifecycleScope.launch {
             delay(2000) // simulasi pengambilan data selama 2 detik
@@ -39,8 +41,15 @@ class SplashScreenActivity : AppCompatActivity() {
             val isLogin = sharedPref.getBoolean("isLogin", false)
             Log.e("Cek Login", "isLogin = $isLogin")
 
+            // Panduan hanya tampil sekali sebelum login pertama
+            val isOnboardingSelesai = appPref.getBoolean("isOnboardingSelesai", false)
+            Log.e("Cek Onboarding", "isOnboardingSelesai = $isOnboardingSelesai")
+
             if (isLogin) {
                 val intent = Intent(this@SplashScreenActivity, BaseActivity::class.java)
+                startActivity(intent)
+            } else if (!isOnboardingSelesai) {
+                val intent = Intent(this@SplashScreenActivity, OnboardingActivity::class.java)
                 startActivity(intent)
             } else {
                 val intent = Intent(this@SplashScreenActivity, AuthActivity::class.java)

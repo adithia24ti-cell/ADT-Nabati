@@ -95,39 +95,66 @@
                     android:textColor="@color/abu_gelap"
                     android:fontFamily="@font/jakarta_regular" />
 
-                <EditText
-                    android:id="@+id/edtUsername"
+                <!-- Kolom username dengan label mengambang, ikon, dan ruang pesan error -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilUsername"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:hint="@string/hint_username"
-                    android:inputType="text"
-                    android:textSize="15sp"
-                    android:textColor="@color/tinta"
-                    android:fontFamily="@font/jakarta_regular"
-                    android:backgroundTint="@color/merah_nabati" />
+                    app:startIconDrawable="@drawable/ic_person"
+                    app:startIconTint="@color/merah_nabati"
+                    app:errorEnabled="true">
 
-                <EditText
-                    android:id="@+id/edtPassword"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textSize="15sp"
+                        android:textColor="@color/tinta"
+                        android:fontFamily="@font/jakarta_regular" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Kolom password dengan tombol lihat/sembunyikan -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilPassword"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:hint="@string/hint_password"
-                    android:inputType="textPassword"
-                    android:textSize="15sp"
-                    android:textColor="@color/tinta"
-                    android:fontFamily="@font/jakarta_regular"
-                    android:backgroundTint="@color/merah_nabati" />
+                    app:startIconDrawable="@drawable/ic_lock"
+                    app:startIconTint="@color/merah_nabati"
+                    app:endIconMode="password_toggle"
+                    app:errorEnabled="true">
 
-                <Button
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textSize="15sp"
+                        android:textColor="@color/tinta"
+                        android:fontFamily="@font/jakarta_regular" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="12dp"
                     android:text="@string/btn_login"
                     android:textColor="@color/white"
                     android:fontFamily="@font/jakarta_bold"
-                    android:backgroundTint="@color/merah_nabati" />
+                    android:backgroundTint="@color/merah_nabati"
+                    app:icon="@drawable/ic_login"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:cornerRadius="20dp" />
 
             </LinearLayout>
 
