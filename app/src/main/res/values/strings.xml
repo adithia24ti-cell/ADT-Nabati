@@ -170,7 +170,7 @@
     <string name="tip_gula">Batas gula harian 50 g (anjuran Kemenkes)</string>
     <string name="tip_natrium">Batas natrium harian 2.000 mg (anjuran Kemenkes)</string>
     <string name="tip_lemak">Batas lemak harian 67 g (anjuran Kemenkes)</string>
-    <string name="tip_wafer">1 bungkus wafer 37 g berisi gula 11–12 g, sekitar 22–24% batas harian</string>
+    <string name="tip_wafer" formatted="false">1 bungkus wafer 37 g berisi gula 11–12 g, sekitar 22–24% batas harian</string>
     <string name="tip_grafik">Lihat Grafik Gizi di halaman Detail Produk</string>
     <string name="tip_catat">Catat camilan agar asupan harian terpantau</string>
     <string name="toast_tips">Ingat: %1$s</string>
