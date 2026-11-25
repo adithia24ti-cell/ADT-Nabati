@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pilihan mode RecyclerView seperti di modul: Grid, List vertikal, Horizontal -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_muat_ulang"
+        android:title="@string/menu_muat_ulang"
+        android:icon="@android:drawable/ic_popup_sync"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_mode_grid"
+        android:title="@string/menu_mode_grid"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_mode_list"
+        android:title="@string/menu_mode_list"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_mode_horizontal"
+        android:title="@string/menu_mode_horizontal"
+        app:showAsAction="never" />
+
+</menu>
