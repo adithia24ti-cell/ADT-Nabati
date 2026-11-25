@@ -13,8 +13,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.adt_nabati.R
 import com.example.adt_nabati.data.api.SupabaseApiClient
+import com.example.adt_nabati.data.model.FavoritModel
 import com.example.adt_nabati.data.model.KonsumsiModel
 import com.example.adt_nabati.databinding.ActivitySnackDetailBinding
+import com.example.adt_nabati.databinding.DialogCatatanFavoritBinding
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
@@ -173,6 +175,66 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
 
+    // Produk yang sudah ada di favorit tidak ditambahkan lagi
+    private fun cekLaluTambahFavorit(nama: String) {
+        val userId = getSharedPreferences("user_pref", MODE_PRIVATE).getLong("userId", 0L)
+
+        lifecycleScope.launch {
+            try {
+                val response = SupabaseApiClient.apiService.cekFavorit("eq.$userId", "eq.$nama")
+                val hasil = response.body()
+                Log.e("Supabase", "Cek favorit $nama, kode respon: ${response.code()}")
+
+                if (!response.isSuccessful || hasil == null) {
+                    Log.e("Supabase", "Pesan server: ${response.errorBody()?.string()}")
+                    Toast.makeText(this@SnackDetailActivity, getString(R.string.toast_gagal_server, response.code()), Toast.LENGTH_SHORT).show()
+                } else if (hasil.isNotEmpty()) {
+                    Toast.makeText(this@SnackDetailActivity, R.string.toast_favorit_sudah_ada, Toast.LENGTH_SHORT).show()
+                } else {
+                    dialogTambahFavorit(userId, nama)
+                }
+            } catch (e: Exception) {
+                Log.e("Supabase", "Cek favorit gagal: ${e.message}")
+                Toast.makeText(this@SnackDetailActivity, R.string.toast_gagal_koneksi, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    // Dialog catatan opsional sebelum produk disimpan ke tabel favorit
+    private fun dialogTambahFavorit(userId: Long, nama: String) {
+        val dialogBinding = DialogCatatanFavoritBinding.inflate(layoutInflater)
+
+        MaterialAlertDialogBuilder(this)
+            .setTitle(getString(R.string.dialog_tambah_favorit_title, nama))
+            .setView(dialogBinding.root)
+            .setPositiveButton(R.string.btn_simpan) { dialog, _ ->
+                dialog.dismiss()
+                val catatan = dialogBinding.edtCatatan.text.toString().trim()
+                simpanFavorit(FavoritModel(user_id = userId, nama_produk = nama, catatan = catatan))
+            }
+            .setNegativeButton(R.string.dialog_batal) { dialog, _ -> dialog.dismiss() }
+            .show()
+    }
+
+    private fun simpanFavorit(favorit: FavoritModel) {
+        lifecycleScope.launch {
+            try {
+                val response = SupabaseApiClient.apiService.tambahFavorit(favorit)
+                Log.e("Supabase", "Tambah favorit ${favorit.nama_produk}, kode respon: ${response.code()}")
+
+                if (response.isSuccessful) {
+                    Toast.makeText(this@SnackDetailActivity, R.string.toast_favorit, Toast.LENGTH_SHORT).show()
+                } else {
+                    Log.e("Supabase", "Pesan server: ${response.errorBody()?.string()}")
+                    Toast.makeText(this@SnackDetailActivity, getString(R.string.toast_gagal_server, response.code()), Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Log.e("Supabase", "Tambah favorit gagal: ${e.message}")
+                Toast.makeText(this@SnackDetailActivity, R.string.toast_gagal_koneksi, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     // Dipanggil saat mesin TTS selesai disiapkan
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
@@ -324,7 +386,7 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 true
             }
             R.id.action_favorit -> {
-                Toast.makeText(this, R.string.toast_favorit, Toast.LENGTH_SHORT).show()
+                cekLaluTambahFavorit(intent.getStringExtra("nama") ?: "")
                 true
             }
             R.id.action_info -> {

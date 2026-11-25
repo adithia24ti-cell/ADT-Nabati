@@ -49,6 +49,7 @@ class AkunFragment : Fragment() {
         // Data menu berupa pasangan judul dan keterangan untuk simple_list_item_2
         val menuAkun = listOf(
             mapOf("judul" to getString(R.string.menu_riwayat), "keterangan" to getString(R.string.desc_riwayat)),
+            mapOf("judul" to getString(R.string.menu_favorit_akun), "keterangan" to getString(R.string.desc_favorit_akun)),
             mapOf("judul" to getString(R.string.menu_target), "keterangan" to getString(R.string.desc_target)),
             mapOf("judul" to getString(R.string.menu_sumber), "keterangan" to getString(R.string.desc_sumber)),
             mapOf("judul" to getString(R.string.menu_tentang), "keterangan" to getString(R.string.desc_tentang)),
@@ -69,9 +70,12 @@ class AkunFragment : Fragment() {
             val judul = menuDipilih["judul"]
             val keterangan = menuDipilih["keterangan"]
             Log.e("Menu Akun", "Menu dipilih: $judul")
-            // Menu Riwayat membuka halaman data dari Supabase, menu lain cukup Toast
+            // Menu Riwayat dan Favorit membuka halaman data dari Supabase, menu lain cukup Toast
             if (judul == getString(R.string.menu_riwayat)) {
                 val intent = Intent(requireContext(), RiwayatKonsumsiActivity::class.java)
+                startActivity(intent)
+            } else if (judul == getString(R.string.menu_favorit_akun)) {
+                val intent = Intent(requireContext(), FavoritActivity::class.java)
                 startActivity(intent)
             } else {
                 Toast.makeText(requireContext(), getString(R.string.toast_menu_akun, judul, keterangan), Toast.LENGTH_SHORT).show()

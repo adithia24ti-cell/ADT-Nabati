@@ -111,8 +111,7 @@
     <string name="title_riwayat">Riwayat Konsumsi</string>
     <string name="subtitle_riwayat">Tersimpan di Supabase</string>
     <string name="riwayat_memuat">Memuat riwayat…</string>
-    <string name="riwayat_kosong">Belum ada camilan yang dicatat.
-Buka Detail Produk lalu tekan Catat Konsumsi.</string>
+    <string name="riwayat_kosong">Belum ada camilan yang dicatat.\nBuka Detail Produk lalu tekan Catat Konsumsi.</string>
     <string name="riwayat_ringkasan">%1$d catatan · total gula %2$d g (batas harian 50 g)</string>
     <string name="fmt_jumlah_bungkus">%1$d bungkus</string>
     <string name="fmt_gizi_konsumsi">Gula %1$d g · Natrium %2$d mg · Lemak %3$d g</string>
@@ -129,6 +128,47 @@ Buka Detail Produk lalu tekan Catat Konsumsi.</string>
     <string name="toast_jumlah_diubah">Jumlah berhasil diubah</string>
     <string name="toast_konsumsi_dihapus">Catatan berhasil dihapus</string>
     <string name="toast_catat_dibatalkan">Pencatatan dibatalkan</string>
+
+    <!-- CRUD Produk Favorit -->
+    <string name="menu_favorit_akun">Produk Favorit</string>
+    <string name="desc_favorit_akun">Camilan favorit beserta catatan pribadimu</string>
+    <string name="title_favorit">Produk Favorit</string>
+    <string name="favorit_memuat">Memuat favorit…</string>
+    <string name="favorit_kosong">Belum ada produk favorit.\nBuka Detail Produk lalu tekan ikon bintang.</string>
+    <string name="favorit_ringkasan">%1$d produk favorit</string>
+    <string name="favorit_tanpa_catatan">Belum ada catatan</string>
+    <string name="hint_catatan">Catatan (opsional)</string>
+    <string name="helper_catatan">Contoh: enak buat bekal sekolah</string>
+    <string name="btn_ubah_catatan">Ubah Catatan</string>
+    <string name="dialog_tambah_favorit_title">Tambah %1$s ke favorit</string>
+    <string name="dialog_ubah_catatan_title">Catatan %1$s</string>
+    <string name="dialog_hapus_favorit_title">Hapus dari Favorit?</string>
+    <string name="dialog_hapus_favorit">%1$s akan dihapus dari daftar favorit.</string>
+    <string name="toast_favorit_sudah_ada">Produk ini sudah ada di favorit</string>
+    <string name="toast_catatan_diubah">Catatan berhasil diubah</string>
+    <string name="toast_favorit_dihapus">Produk dihapus dari favorit</string>
+
+    <!-- Produk Nabati Dunia (Open Food Facts) -->
+    <string name="btn_produk_dunia">Produk Nabati Dunia</string>
+    <string name="title_produk_dunia">Produk Nabati Dunia</string>
+    <string name="subtitle_produk_dunia">Data Open Food Facts</string>
+    <string name="fakta_judul">Fakta Gula</string>
+    <string name="fakta_memuat">Mencari fakta gula…</string>
+    <string name="fakta_gagal">Fakta gula belum bisa dimuat.</string>
+    <string name="fakta_gula">Tahukah kamu? %1$s mengandung %2$.1f g gula per 100 g, setara %3$d%% batas gula harian (50 g).</string>
+    <string name="btn_fakta_lain">Fakta Lain</string>
+    <string name="dunia_memuat">Memuat produk…</string>
+    <string name="dunia_jumlah">%1$d produk Nabati ditemukan · ketuk untuk detail</string>
+    <string name="dunia_gula">Gula %1$.1f g / 100 g</string>
+    <string name="dunia_gula_kosong">Gula: data belum ada</string>
+    <string name="dunia_tidak_ada">belum ada</string>
+    <string name="fmt_satu_desimal">%1$.1f g</string>
+    <string name="dunia_detail">Merek: %1$s\n\nPer 100 g:\n• Gula: %2$s\n• Lemak: %3$s\n• Garam: %4$s\n\nNutri-Score: %5$s\nBarcode: %6$s</string>
+    <string name="dunia_sumber">Sumber: Open Food Facts (openfoodfacts.org), data diisi komunitas dan dapat berbeda dengan kemasan.</string>
+    <string name="menu_muat_ulang">Muat Ulang</string>
+    <string name="menu_mode_grid">Tampilan Grid</string>
+    <string name="menu_mode_list">Tampilan List</string>
+    <string name="menu_mode_horizontal">Tampilan Horizontal</string>
 
     <!-- Akun dan logout -->
     <string name="label_sapaan_user">Hai, %1$s! Mau ngemil apa hari ini?</string>

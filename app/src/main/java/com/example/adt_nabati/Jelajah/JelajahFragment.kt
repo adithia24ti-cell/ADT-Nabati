@@ -43,6 +43,12 @@ class JelajahFragment : Fragment() {
             startActivity(intent)
         }
 
+        // Buka galeri produk Nabati dari Open Food Facts
+        binding.btnProdukDunia.setOnClickListener {
+            val intent = Intent(requireContext(), ProdukDuniaActivity::class.java)
+            startActivity(intent)
+        }
+
         // Daftar tips ngemil, satu teks per baris
         val tipsList = listOf(
             getString(R.string.tip_label),
