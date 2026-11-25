@@ -38,7 +38,8 @@ class SplashScreenActivity : AppCompatActivity() {
             delay(2000) // simulasi pengambilan data selama 2 detik
 
             // Tentukan halaman berikutnya dari status login
-            val isLogin = sharedPref.getBoolean("isLogin", false)
+            // Sesi dianggap sah jika punya id user dari tabel users Supabase
+            val isLogin = sharedPref.getBoolean("isLogin", false) && sharedPref.getLong("userId", 0L) > 0L
             Log.e("Cek Login", "isLogin = $isLogin")
 
             // Panduan hanya tampil sekali sebelum login pertama

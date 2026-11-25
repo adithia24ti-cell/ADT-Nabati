@@ -31,9 +31,16 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".BaseActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Akun.RiwayatKonsumsiActivity"
+            android:exported="false" />
         <activity
             android:name=".Akun.ProfileActivity"
             android:exported="false"

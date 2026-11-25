@@ -3,12 +3,16 @@ package com.example.adt_nabati
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import com.example.adt_nabati.data.api.SupabaseApiClient
 import com.example.adt_nabati.databinding.ActivityAuthBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.launch
 
 class AuthActivity : AppCompatActivity() {
 
@@ -28,10 +32,9 @@ class AuthActivity : AppCompatActivity() {
             insets
         }
 
-        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
-
         binding.btnLogin.setOnClickListener {
-            val username = binding.edtUsername.text.toString()
+            // Spasi di awal/akhir username dibuang
+            val username = binding.edtUsername.text.toString().trim()
             val password = binding.edtPassword.text.toString()
             Log.e("Cek Login", "Username: $username")
 
@@ -48,28 +51,60 @@ class AuthActivity : AppCompatActivity() {
                     binding.tilPassword.error = getString(R.string.error_password_kosong)
                 }
                 Log.e("Info Login", "Login gagal, ada kolom kosong")
-            } else if (username == password) {
-                // Login berhasil jika username sama dengan password
-                // Simpan status login dan username
-                val editor = sharedPref.edit()
-                editor.putBoolean("isLogin", true)
-                editor.putString("username", username)
-                editor.apply()
-                Log.e("Info Login", "Login berhasil, isLogin disimpan true")
-
-                val intent = Intent(this, BaseActivity::class.java)
-                startActivity(intent)
-                finish()
             } else {
-                Log.e("Info Login", "Login gagal")
-                MaterialAlertDialogBuilder(this)
-                    .setTitle(R.string.dialog_login_title)
-                    .setMessage(R.string.dialog_login_message)
-                    .setPositiveButton(R.string.dialog_ok) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .show()
+                cekLogin(username, password)
             }
+        }
+
+        binding.textDaftar.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    // Cari user di tabel users
+    private fun cekLogin(username: String, password: String) {
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        binding.btnLogin.isEnabled = false
+
+        lifecycleScope.launch {
+            try {
+                val response = SupabaseApiClient.apiService.login("eq.$username", "eq.$password")
+                val hasil = response.body()
+                Log.e("Supabase", "Login $username, kode respon: ${response.code()}")
+
+                if (!response.isSuccessful || hasil == null) {
+                    // Server menolak request
+                    Log.e("Supabase", "Pesan server: ${response.errorBody()?.string()}")
+                    Toast.makeText(this@AuthActivity, getString(R.string.toast_gagal_server, response.code()), Toast.LENGTH_SHORT).show()
+                } else if (hasil.isNotEmpty()) {
+                    // Simpan status login
+                    val user = hasil[0]
+                    val editor = sharedPref.edit()
+                    editor.putBoolean("isLogin", true)
+                    editor.putString("username", user.username)
+                    editor.putLong("userId", user.id ?: 0L)
+                    editor.apply()
+                    Log.e("Info Login", "Login berhasil, userId ${user.id} disimpan")
+
+                    val intent = Intent(this@AuthActivity, BaseActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Log.e("Info Login", "Login gagal, username atau password salah")
+                    MaterialAlertDialogBuilder(this@AuthActivity)
+                        .setTitle(R.string.dialog_login_title)
+                        .setMessage(R.string.dialog_login_message)
+                        .setPositiveButton(R.string.dialog_ok) { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .show()
+                }
+            } catch (e: Exception) {
+                Log.e("Supabase", "Login gagal: ${e.message}")
+                Toast.makeText(this@AuthActivity, R.string.toast_gagal_koneksi, Toast.LENGTH_SHORT).show()
+            }
+            binding.btnLogin.isEnabled = true
         }
     }
 

@@ -156,6 +156,19 @@
                     app:iconPadding="8dp"
                     app:cornerRadius="20dp" />
 
+                <!-- Tautan ke halaman Register untuk pengguna baru -->
+                <TextView
+                    android:id="@+id/textDaftar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:padding="4dp"
+                    android:gravity="center"
+                    android:text="@string/auth_ke_daftar"
+                    android:textSize="13sp"
+                    android:textColor="@color/merah_nabati"
+                    android:fontFamily="@font/jakarta_bold" />
+
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>

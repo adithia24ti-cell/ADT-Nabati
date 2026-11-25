@@ -10,7 +10,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.adt_nabati.R
+import com.example.adt_nabati.data.api.SupabaseApiClient
+import com.example.adt_nabati.data.model.KonsumsiModel
 import com.example.adt_nabati.databinding.ActivitySnackDetailBinding
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.XAxis
@@ -24,6 +27,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
@@ -110,17 +114,62 @@ class SnackDetailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 .setPositiveButton(R.string.dialog_ya) { dialog, _ ->
                     dialog.dismiss()
                     Log.e("Info Dialog", "Pengguna memilih Ya, $nama dicatat")
-                    Snackbar.make(binding.root, getString(R.string.snackbar_tercatat, nama), Snackbar.LENGTH_LONG)
-                        .setAction(R.string.snackbar_undo) {
-                            Log.e("Info Snackbar", "Pencatatan $nama dibatalkan")
-                        }
-                        .show()
+                    simpanKonsumsi(nama ?: "", gula, natrium, lemak)
                 }
                 .setNegativeButton(R.string.dialog_batal) { dialog, _ ->
                     dialog.dismiss()
                     Log.e("Info Dialog", "Pengguna memilih Batal")
                 }
                 .show()
+        }
+    }
+
+    // Simpan 1 bungkus ke tabel konsumsi, jumlah bisa diubah nanti di halaman Riwayat
+    private fun simpanKonsumsi(nama: String, gula: Int, natrium: Int, lemak: Int) {
+        val userId = getSharedPreferences("user_pref", MODE_PRIVATE).getLong("userId", 0L)
+        val konsumsi = KonsumsiModel(
+            user_id = userId, nama_produk = nama, jumlah = 1,
+            gula = gula, natrium = natrium, lemak = lemak
+        )
+
+        lifecycleScope.launch {
+            try {
+                val response = SupabaseApiClient.apiService.tambahKonsumsi(konsumsi)
+                Log.e("Supabase", "Catat konsumsi $nama, kode respon: ${response.code()}")
+                val hasil = response.body()
+
+                if (response.isSuccessful && hasil != null && hasil.isNotEmpty()) {
+                    val idBaru = hasil[0].id
+                    Snackbar.make(binding.root, getString(R.string.snackbar_tercatat, nama), Snackbar.LENGTH_LONG)
+                        .setAction(R.string.snackbar_undo) {
+                            Log.e("Info Snackbar", "Pencatatan $nama dibatalkan")
+                            batalkanKonsumsi(idBaru)
+                        }
+                        .show()
+                } else {
+                    Log.e("Supabase", "Pesan server: ${response.errorBody()?.string()}")
+                    Toast.makeText(this@SnackDetailActivity, getString(R.string.toast_gagal_server, response.code()), Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Log.e("Supabase", "Catat konsumsi gagal: ${e.message}")
+                Toast.makeText(this@SnackDetailActivity, R.string.toast_gagal_koneksi, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    // Tombol Batalkan di Snackbar menghapus baris yang baru saja dibuat
+    private fun batalkanKonsumsi(id: Long?) {
+        lifecycleScope.launch {
+            try {
+                val response = SupabaseApiClient.apiService.hapusKonsumsi("eq.$id")
+                Log.e("Supabase", "Batalkan konsumsi id $id, kode respon: ${response.code()}")
+                if (response.isSuccessful) {
+                    Toast.makeText(this@SnackDetailActivity, R.string.toast_catat_dibatalkan, Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Log.e("Supabase", "Batalkan konsumsi gagal: ${e.message}")
+                Toast.makeText(this@SnackDetailActivity, R.string.toast_gagal_koneksi, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

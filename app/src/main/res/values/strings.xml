@@ -90,6 +90,46 @@
     <string name="error_username_kosong">Username wajib diisi</string>
     <string name="error_password_kosong">Password wajib diisi</string>
 
+    <!-- Register dan koneksi Supabase -->
+    <string name="auth_ke_daftar">Belum punya akun? Daftar di sini</string>
+    <string name="register_judul">Buat Akun</string>
+    <string name="register_sub">Daftar untuk menyimpan riwayat dan favorit camilanmu</string>
+    <string name="hint_email">Email</string>
+    <string name="helper_password">Minimal 4 karakter</string>
+    <string name="btn_daftar">Daftar</string>
+    <string name="register_ke_login">Sudah punya akun? Masuk</string>
+    <string name="error_email">Email belum valid</string>
+    <string name="error_password_pendek">Password minimal 4 karakter</string>
+    <string name="error_username_dipakai">Username sudah dipakai, coba yang lain</string>
+    <string name="toast_register_berhasil">Akun %1$s berhasil dibuat, silahkan masuk</string>
+    <string name="toast_gagal_server">Permintaan gagal (kode %1$d)</string>
+    <string name="toast_gagal_koneksi">Gagal terhubung ke server, periksa internet</string>
+
+    <!-- CRUD Riwayat Konsumsi -->
+    <string name="menu_riwayat">Riwayat Konsumsi</string>
+    <string name="desc_riwayat">Lihat, ubah, dan hapus camilan yang sudah dicatat</string>
+    <string name="title_riwayat">Riwayat Konsumsi</string>
+    <string name="subtitle_riwayat">Tersimpan di Supabase</string>
+    <string name="riwayat_memuat">Memuat riwayat…</string>
+    <string name="riwayat_kosong">Belum ada camilan yang dicatat.
+Buka Detail Produk lalu tekan Catat Konsumsi.</string>
+    <string name="riwayat_ringkasan">%1$d catatan · total gula %2$d g (batas harian 50 g)</string>
+    <string name="fmt_jumlah_bungkus">%1$d bungkus</string>
+    <string name="fmt_gizi_konsumsi">Gula %1$d g · Natrium %2$d mg · Lemak %3$d g</string>
+    <string name="btn_ubah_jumlah">Ubah Jumlah</string>
+    <string name="btn_hapus">Hapus</string>
+    <string name="btn_simpan">Simpan</string>
+    <string name="dialog_ubah_title">Ubah jumlah %1$s</string>
+    <string name="hint_jumlah">Jumlah</string>
+    <string name="suffix_bungkus">bungkus</string>
+    <string name="helper_jumlah">Isi 1 sampai 20</string>
+    <string name="error_jumlah">Jumlah harus 1 sampai 20</string>
+    <string name="dialog_hapus_title">Hapus Catatan?</string>
+    <string name="dialog_hapus_konsumsi">Catatan %1$s akan dihapus dari riwayat.</string>
+    <string name="toast_jumlah_diubah">Jumlah berhasil diubah</string>
+    <string name="toast_konsumsi_dihapus">Catatan berhasil dihapus</string>
+    <string name="toast_catat_dibatalkan">Pencatatan dibatalkan</string>
+
     <!-- Akun dan logout -->
     <string name="label_sapaan_user">Hai, %1$s! Mau ngemil apa hari ini?</string>
     <string name="akun_title">Akun Kamu</string>
